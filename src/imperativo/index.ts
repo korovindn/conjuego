@@ -30,7 +30,11 @@ export const imperativo = (
       [Celda.SEGUNDA_SINGULAR_VOSEO]: indicativoPresente[
         Celda.SEGUNDA_SINGULAR_VOSEO
       ].slice(0, -1),
-      [Celda.SEGUNDA_PLURAL]: ortografiarPorClase(raiz, clase, ajustes)('ád', 'éd', 'íd'),
+      [Celda.SEGUNDA_PLURAL]: ortografiarPorClase(raiz, clase, ajustes)(
+        'ád',
+        'éd',
+        'íd',
+      ),
     },
     [Polaridad.NEGATIVA]: subjuntivo,
   };

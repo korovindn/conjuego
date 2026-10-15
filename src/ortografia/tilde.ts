@@ -22,7 +22,9 @@ const quitarTilde = (palabra: string) =>
   palabra.replace(TILDE, (vocal) => SIN_TILDE[vocal]);
 const terminaEnVocalNS = (palabra: string) => /[aeiouáéíóúns]$/.test(palabra);
 const acentuacionNatural = (palabra: string): Acentuacion =>
-  nucleos(palabra).length > 1 && terminaEnVocalNS(palabra) ? Acentuacion.LLANA : Acentuacion.AGUDA;
+  nucleos(palabra).length > 1 && terminaEnVocalNS(palabra)
+    ? Acentuacion.LLANA
+    : Acentuacion.AGUDA;
 const acentuacion = (marcada: string): Acentuacion => {
   const desdeLaUltima = nucleos(marcada).reverse().findIndex(llevaTilde);
   return desdeLaUltima === 0
@@ -43,7 +45,8 @@ export const marcarTonica = (palabra: string): string => {
   }
 
   const ultima = nucleos(palabra).length - 1;
-  const tonica = acentuacionNatural(palabra) === Acentuacion.LLANA ? ultima - 1 : ultima;
+  const tonica =
+    acentuacionNatural(palabra) === Acentuacion.LLANA ? ultima - 1 : ultima;
 
   return acentuar(palabra, tonica);
 };

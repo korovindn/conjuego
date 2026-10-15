@@ -10,13 +10,13 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
-    "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format": "oxfmt",
+    "format:check": "oxfmt --check"
   },
   "devDependencies": {
     "@types/node": "^26.6.5",
     "@vitest/coverage-v8": "^5.0.4",
-    "prettier": "^3.9.10",
+    "oxfmt": "^0.73.0",
     "typescript": "^7.0.2",
     "vitest": "^5.0.4"
   }

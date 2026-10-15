@@ -32,7 +32,9 @@ export enum Pronombre {
 }
 
 export type SegundaSingularVariant =
-  Pronombre.TU | Pronombre.VOS | Pronombre.USTED;
+  | Pronombre.TU
+  | Pronombre.VOS
+  | Pronombre.USTED;
 
 export type SegundaPluralVariant = Pronombre.VOSOTROS | Pronombre.USTEDES;
 
