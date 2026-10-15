@@ -7,6 +7,8 @@
   "type": "commonjs",
   "main": "dist/index.js",
   "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
@@ -19,5 +21,9 @@
     "oxfmt": "^0.73.0",
     "typescript": "^7.0.2",
     "vitest": "^5.0.4"
-  }
+  },
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ]
 }
