@@ -10,14 +10,13 @@ export interface Raices {
 }
 
 export interface EntradaVerbo {
-  infinitivo: string;
   abstracto?: true;
-  como?: string;
+  hijos?: string[];
   alternancia?: Alternancia;
   hiato?: boolean;
   zc?: false;
   raices?: Raices;
-  imperativoTu?: Forma;
+  imperativoSegundaSingular?: Forma;
   participio?: Forma;
   gerundio?: Forma;
   formas?: Partial<Record<Celda, Forma>>;

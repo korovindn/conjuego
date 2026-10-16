@@ -147,8 +147,8 @@ describe('conjuego', () => {
     beforeEach(() => {
       configurar(
         new Map([
-          ['mecer', { infinitivo: 'mecer', zc: false }],
-          ['cocer', { infinitivo: 'cocer', zc: false }],
+          ['mecer', { zc: false }],
+          ['cocer', { zc: false }],
         ]),
       );
     });
@@ -159,6 +159,32 @@ describe('conjuego', () => {
       ['cocer', 'cozo', 'coza'],
       ['conocer', 'conozco', 'conozca'],
     ])('%s', (verbo, presente, subjuntivo) => {
+      const tabla = conjuego(verbo);
+
+      expect(
+        tabla[Modo.INDICATIVO][Tiempo.PRESENTE][Celda.PRIMERA_SINGULAR],
+      ).toBe(presente);
+      expect(
+        tabla[Modo.SUBJUNTIVO][Tiempo.PRESENTE][Celda.PRIMERA_SINGULAR],
+      ).toBe(subjuntivo);
+    });
+  });
+
+  describe('hijos', () => {
+    beforeEach(() => {
+      configurar(
+        new Map([
+          ['mecer', { zc: false, hijos: ['remecer'] }],
+          ['facer', { abstracto: true, zc: false, hijos: ['satisfacer'] }],
+        ]),
+      );
+    });
+
+    it.each([
+      ['remecer', 'remezo', 'remeza'],
+      ['remecerse', 'me remezo', 'me remeza'],
+      ['satisfacer', 'satisfazo', 'satisfaza'],
+    ])('%s hereda del padre', (verbo, presente, subjuntivo) => {
       const tabla = conjuego(verbo);
 
       expect(

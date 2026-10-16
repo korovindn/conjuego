@@ -1,4 +1,4 @@
-import { parsearVerbo, normalizar } from './helpers';
+import { expandirDiccionario, parsearVerbo, normalizar } from './helpers';
 import {
   Ajustes,
   Diccionario,
@@ -29,7 +29,7 @@ import { agregarEnclitico } from './ortografia';
 let d: Diccionario | undefined;
 
 export const configurar = (diccionario: Diccionario) => {
-  d = diccionario;
+  d = expandirDiccionario(diccionario);
 };
 
 export const conjuego = (verbo: string): Tabla => {
