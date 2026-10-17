@@ -29,6 +29,36 @@ const jsonFiles = (directory) =>
     return entry.isFile() && entry.name.endsWith('.json') ? [path] : [];
   });
 
+const parentsByChild = (dictionary) => {
+  const parents = new Map();
+  for (const [parent, entry] of Object.entries(dictionary)) {
+    for (const child of entry.hijos ?? []) {
+      parents.set(child, new Set(parents.get(child)).add(parent));
+    }
+  }
+  return parents;
+};
+
+const validate = (dictionary) => {
+  const errors = [...parentsByChild(dictionary)].flatMap(([child, parents]) => {
+    const list = [...parents].join(', ');
+    return [
+      ...(dictionary[child]?.hijos
+        ? [`"${child}" has hijos but is itself a hijo of ${list}`]
+        : []),
+      ...(parents.size > 1
+        ? [`"${child}" is a hijo of several parents: ${list}`]
+        : []),
+    ];
+  });
+
+  if (errors.length > 0) {
+    throw new Error(
+      `Invalid dictionary:\n${errors.map((error) => `  - ${error}`).join('\n')}`,
+    );
+  }
+};
+
 const files = jsonFiles(sourceDirectory).sort();
 let dictionary = Object.create(null);
 
@@ -39,6 +69,8 @@ for (const file of files) {
   }
   dictionary = merge(dictionary, contents);
 }
+
+validate(dictionary);
 
 mkdirSync(dirname(outputFile), { recursive: true });
 writeFileSync(outputFile, `${JSON.stringify(dictionary, null, 2)}\n`);
