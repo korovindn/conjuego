@@ -16,13 +16,25 @@ const ANTE_A_O: Cambio[] = [
 ];
 const ZC: Cambio = [/(?<=[aeiou])c$/, 'zc'];
 const ANTE_Y: Cambio[] = [[/ü$/, 'u']];
-const I_ATONA_ANTE_VOCAL = /^i(?=[aeoáéó])/;
-const TERMINA_EN_VOCAL = /(?:[aeoü]|(?<![qg])u)$/;
-const TERMINA_EN_PALATAL = /(?:ñ|ll)$/;
+const ABIERTA = '[aeoáéó]';
+const U_SONORA = '(?:ü|(?<![qg])u)';
+const I_ATONA_ANTE_VOCAL = new RegExp(`^i(?=${ABIERTA})`);
+const EMPIEZA_POR_ABIERTA = new RegExp(`^${ABIERTA}`);
+const TERMINA_EN_VOCAL = new RegExp(`(?:[aeo]|${U_SONORA})$`);
+const TERMINA_EN_U_SONORA = new RegExp(`(?:ú|${U_SONORA})$`);
+const ABSORBE_I_ATONA = /(?:ñ|ll|i)$/;
 
-const adaptarDesinencia = (raiz: string, desinencia: string) => {
-  if (TERMINA_EN_PALATAL.test(raiz)) {
+const adaptarDesinencia = (raiz: string, clase: Clase, desinencia: string) => {
+  if (ABSORBE_I_ATONA.test(raiz)) {
     return desinencia.replace(I_ATONA_ANTE_VOCAL, '');
+  }
+
+  if (
+    clase === Clase.IR &&
+    TERMINA_EN_U_SONORA.test(raiz) &&
+    EMPIEZA_POR_ABIERTA.test(desinencia)
+  ) {
+    return `y${desinencia}`;
   }
 
   if (TERMINA_EN_VOCAL.test(raiz)) {
@@ -69,7 +81,7 @@ export const unir = (
   desinencia: string,
   ajustes: Ajustes = {},
 ) => {
-  const desinenciaAdaptada = adaptarDesinencia(raiz, desinencia);
+  const desinenciaAdaptada = adaptarDesinencia(raiz, clase, desinencia);
   const raizAdaptada = adaptarRaiz(raiz, clase, desinenciaAdaptada, ajustes);
 
   return `${raizAdaptada}${desinenciaAdaptada}`;

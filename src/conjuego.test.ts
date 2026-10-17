@@ -561,4 +561,203 @@ describe('conjuego', () => {
       esperado,
     );
   });
+
+  it.each([
+    [
+      'huir',
+      ['huyo', 'huyes', 'huis', 'huye', 'huimos', 'huis', 'huyen'],
+      ['huya', 'huyas', 'huyas', 'huya', 'huyamos', 'huyáis', 'huyan'],
+    ],
+    [
+      'construir',
+      [
+        'construyo',
+        'construyes',
+        'construís',
+        'construye',
+        'construimos',
+        'construís',
+        'construyen',
+      ],
+      [
+        'construya',
+        'construyas',
+        'construyas',
+        'construya',
+        'construyamos',
+        'construyáis',
+        'construyan',
+      ],
+    ],
+  ])('-uir inserta y: %s', (verbo, indicativo, subjuntivo) => {
+    const tabla = conjuego(verbo);
+
+    expect(Object.values(tabla[Modo.INDICATIVO][Tiempo.PRESENTE])).toEqual(
+      indicativo,
+    );
+    expect(Object.values(tabla[Modo.SUBJUNTIVO][Tiempo.PRESENTE])).toEqual(
+      subjuntivo,
+    );
+  });
+
+  describe('hiato', () => {
+    beforeEach(() => {
+      configurar(
+        new Map([
+          ['enviar', { hiato: true, hijos: ['reenviar'] }],
+          ['actuar', { hiato: true }],
+          ['reunir', { hiato: true }],
+          ['prohibir', { hiato: true }],
+          ['rehuir', { hiato: true }],
+          [
+            'reír',
+            { alternancia: Alternancia.E_I, hiato: true, hijos: ['sonreír'] },
+          ],
+          ['freír', { alternancia: Alternancia.E_I, hiato: true }],
+          ['desleír', { alternancia: Alternancia.E_I, hiato: true }],
+        ]),
+      );
+    });
+
+    it('enviar en toda la tabla', () => {
+      const tabla = conjuego('enviar');
+
+      expect(tabla[Modo.INDICATIVO][Tiempo.PRESENTE]).toEqual({
+        [Celda.PRIMERA_SINGULAR]: 'envío',
+        [Celda.SEGUNDA_SINGULAR]: 'envías',
+        [Celda.SEGUNDA_SINGULAR_VOSEO]: 'enviás',
+        [Celda.TERCERA_SINGULAR]: 'envía',
+        [Celda.PRIMERA_PLURAL]: 'enviamos',
+        [Celda.SEGUNDA_PLURAL]: 'enviáis',
+        [Celda.TERCERA_PLURAL]: 'envían',
+      });
+      expect(tabla[Modo.SUBJUNTIVO][Tiempo.PRESENTE]).toEqual({
+        [Celda.PRIMERA_SINGULAR]: 'envíe',
+        [Celda.SEGUNDA_SINGULAR]: 'envíes',
+        [Celda.SEGUNDA_SINGULAR_VOSEO]: 'envíes',
+        [Celda.TERCERA_SINGULAR]: 'envíe',
+        [Celda.PRIMERA_PLURAL]: 'enviemos',
+        [Celda.SEGUNDA_PLURAL]: 'enviéis',
+        [Celda.TERCERA_PLURAL]: 'envíen',
+      });
+      expect(tabla[Modo.IMPERATIVO][Polaridad.AFIRMATIVA]).toEqual({
+        [Celda.SEGUNDA_SINGULAR]: 'envía',
+        [Celda.SEGUNDA_SINGULAR_VOSEO]: 'enviá',
+        [Celda.TERCERA_SINGULAR]: 'envíe',
+        [Celda.PRIMERA_PLURAL]: 'enviemos',
+        [Celda.SEGUNDA_PLURAL]: 'enviad',
+        [Celda.TERCERA_PLURAL]: 'envíen',
+      });
+      expect(
+        tabla[Modo.INDICATIVO][Tiempo.PRETERITO][Celda.PRIMERA_SINGULAR],
+      ).toBe('envié');
+      expect(tabla[FORMA_NO_PERSONAL]).toEqual({
+        [FormaNoPersonal.INFINITIVO]: 'enviar',
+        [FormaNoPersonal.GERUNDIO]: 'enviando',
+        [FormaNoPersonal.PARTICIPIO_PASADO]: 'enviado',
+      });
+    });
+
+    it('actuar en presente', () => {
+      const tabla = conjuego('actuar');
+
+      expect(tabla[Modo.INDICATIVO][Tiempo.PRESENTE]).toEqual({
+        [Celda.PRIMERA_SINGULAR]: 'actúo',
+        [Celda.SEGUNDA_SINGULAR]: 'actúas',
+        [Celda.SEGUNDA_SINGULAR_VOSEO]: 'actuás',
+        [Celda.TERCERA_SINGULAR]: 'actúa',
+        [Celda.PRIMERA_PLURAL]: 'actuamos',
+        [Celda.SEGUNDA_PLURAL]: 'actuáis',
+        [Celda.TERCERA_PLURAL]: 'actúan',
+      });
+      expect(tabla[Modo.SUBJUNTIVO][Tiempo.PRESENTE]).toEqual({
+        [Celda.PRIMERA_SINGULAR]: 'actúe',
+        [Celda.SEGUNDA_SINGULAR]: 'actúes',
+        [Celda.SEGUNDA_SINGULAR_VOSEO]: 'actúes',
+        [Celda.TERCERA_SINGULAR]: 'actúe',
+        [Celda.PRIMERA_PLURAL]: 'actuemos',
+        [Celda.SEGUNDA_PLURAL]: 'actuéis',
+        [Celda.TERCERA_PLURAL]: 'actúen',
+      });
+    });
+
+    it.each([
+      ['reunir', Celda.PRIMERA_SINGULAR, 'reúno'],
+      ['reunir', Celda.PRIMERA_PLURAL, 'reunimos'],
+      ['prohibir', Celda.TERCERA_SINGULAR, 'prohíbe'],
+      ['prohibir', Celda.SEGUNDA_PLURAL, 'prohibís'],
+      ['reenviar', Celda.PRIMERA_SINGULAR, 'reenvío'],
+      ['reírse', Celda.PRIMERA_SINGULAR, 'me río'],
+      ['reír', Celda.TERCERA_PLURAL, 'ríen'],
+      ['reír', Celda.PRIMERA_PLURAL, 'reímos'],
+      ['sonreír', Celda.PRIMERA_SINGULAR, 'sonrío'],
+      ['desleír', Celda.PRIMERA_SINGULAR, 'deslío'],
+      ['rehuir', Celda.PRIMERA_SINGULAR, 'rehúyo'],
+      ['rehuir', Celda.TERCERA_PLURAL, 'rehúyen'],
+      ['rehuir', Celda.PRIMERA_PLURAL, 'rehuimos'],
+    ] as const)('presente de %s: %s', (verbo, celda, esperado) => {
+      expect(conjuego(verbo)[Modo.INDICATIVO][Tiempo.PRESENTE][celda]).toBe(
+        esperado,
+      );
+    });
+
+    it.each([
+      ['rehuir', Celda.PRIMERA_SINGULAR, 'rehúya'],
+      ['rehuir', Celda.PRIMERA_PLURAL, 'rehuyamos'],
+      ['reír', Celda.PRIMERA_SINGULAR, 'ría'],
+      ['reír', Celda.SEGUNDA_PLURAL, 'riais'],
+    ] as const)('subjuntivo presente de %s: %s', (verbo, celda, esperado) => {
+      expect(conjuego(verbo)[Modo.SUBJUNTIVO][Tiempo.PRESENTE][celda]).toBe(
+        esperado,
+      );
+    });
+
+    it('reír sin i duplicada', () => {
+      const tabla = conjuego('reír');
+
+      expect(
+        tabla[Modo.INDICATIVO][Tiempo.PRETERITO][Celda.TERCERA_SINGULAR],
+      ).toBe('rio');
+      expect(
+        tabla[Modo.INDICATIVO][Tiempo.PRETERITO][Celda.TERCERA_PLURAL],
+      ).toBe('rieron');
+      expect(tabla[FORMA_NO_PERSONAL][FormaNoPersonal.GERUNDIO]).toBe('riendo');
+      expect(
+        tabla[Modo.SUBJUNTIVO][Tiempo.IMPERFECTO][
+          SubjuntivoImperfectoVariant.RA
+        ][Celda.PRIMERA_SINGULAR],
+      ).toBe('riera');
+      expect(
+        tabla[Modo.SUBJUNTIVO][Tiempo.IMPERFECTO][
+          SubjuntivoImperfectoVariant.SE
+        ][Celda.PRIMERA_SINGULAR],
+      ).toBe('riese');
+      expect(
+        conjuego('sonreír')[Modo.INDICATIVO][Tiempo.PRETERITO][
+          Celda.TERCERA_SINGULAR
+        ],
+      ).toBe('sonrió');
+      expect(
+        conjuego('freír')[Modo.INDICATIVO][Tiempo.PRETERITO][
+          Celda.TERCERA_PLURAL
+        ],
+      ).toBe('frieron');
+    });
+
+    it('enclíticos', () => {
+      expect(
+        conjuego('reunirse')[Modo.IMPERATIVO][Polaridad.AFIRMATIVA],
+      ).toMatchObject({
+        [Celda.SEGUNDA_SINGULAR]: 'reúnete',
+        [Celda.SEGUNDA_SINGULAR_VOSEO]: 'reunite',
+        [Celda.PRIMERA_PLURAL]: 'reunámonos',
+        [Celda.TERCERA_PLURAL]: 'reúnanse',
+      });
+      expect(
+        conjuego('reírse')[Modo.IMPERATIVO][Polaridad.AFIRMATIVA][
+          Celda.SEGUNDA_SINGULAR
+        ],
+      ).toBe('ríete');
+    });
+  });
 });

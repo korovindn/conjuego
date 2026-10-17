@@ -22,4 +22,16 @@ describe('ortografiar', () => {
   ] as const)('%s + %s → %s', (raiz, clase, desinencia, esperado) => {
     expect(formar(raiz, clase, desinencia)).toBe(esperado);
   });
+
+  it.each([
+    ['envi', Clase.AR, 'o', 'envío'],
+    ['envi', Clase.AR, 'ámos', 'enviamos'],
+    ['actu', Clase.AR, 'an', 'actúan'],
+    ['reun', Clase.IR, 'o', 'reúno'],
+    ['enraiz', Clase.AR, 'e', 'enraíce'],
+    ['rehu', Clase.IR, 'o', 'rehúyo'],
+    ['rehu', Clase.IR, 'ímos', 'rehuimos'],
+  ] as const)('hiato: %s + %s → %s', (raiz, clase, desinencia, esperado) => {
+    expect(formar(raiz, clase, desinencia, { hiato: true })).toBe(esperado);
+  });
 });

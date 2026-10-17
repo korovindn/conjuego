@@ -101,4 +101,47 @@ describe('unir', () => {
       expect(unir(raiz, clase, desinencia)).toBe(esperado);
     },
   );
+
+  it.each([
+    ['ri', Clase.IR, 'ió', 'rió'],
+    ['ri', Clase.IR, 'iéron', 'riéron'],
+    ['ri', Clase.IR, 'iéndo', 'riéndo'],
+    ['ri', Clase.IR, 'iése', 'riése'],
+    ['re', Clase.IR, 'ímos', 'reímos'],
+  ] as const)(
+    'i átona tras i desaparece: %s + %s → %s',
+    (raiz, clase, desinencia, esperado) => {
+      expect(unir(raiz, clase, desinencia)).toBe(esperado);
+    },
+  );
+
+  it.each([
+    ['hu', 'o', 'huyo'],
+    ['hu', 'es', 'huyes'],
+    ['hu', 'a', 'huya'],
+    ['constru', 'en', 'construyen'],
+    ['constru', 'ámos', 'construyámos'],
+    ['argü', 'o', 'arguyo'],
+    ['argü', 'e', 'arguye'],
+    ['rehú', 'o', 'rehúyo'],
+  ] as const)(
+    '-uir: y ante a, e, o: %s + %s → %s',
+    (raiz, desinencia, esperado) => {
+      expect(unir(raiz, Clase.IR, desinencia)).toBe(esperado);
+    },
+  );
+
+  it.each([
+    ['segu', Clase.IR, 'o', 'sego'],
+    ['segu', Clase.IR, 'a', 'sega'],
+    ['distingu', Clase.IR, 'o', 'distingo'],
+    ['delinqu', Clase.IR, 'o', 'delinco'],
+    ['hu', Clase.IR, 'ímos', 'huímos'],
+    ['actu', Clase.AR, 'o', 'actuo'],
+  ] as const)(
+    'sin y tras u muda, ante i o en -ar: %s + %s → %s',
+    (raiz, clase, desinencia, esperado) => {
+      expect(unir(raiz, clase, desinencia)).toBe(esperado);
+    },
+  );
 });

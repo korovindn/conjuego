@@ -16,10 +16,15 @@ const CON_TILDE: Record<string, string> = {
 const partir = (palabra: string) => palabra.split(NUCLEO);
 const esNucleo = (posicion: number) => posicion % 2 === 1;
 const posicionDelNucleo = (indice: number) => 2 * indice + 1;
+const ULTIMA_DEBIL = /[iu](?=[^iu]*$)/;
+
+export const acentuarUltimaDebil = (texto: string) =>
+  texto.replace(ULTIMA_DEBIL, (vocal) => CON_TILDE[vocal]);
+
 const acentuarNucleo = (nucleo: string) =>
   /[aeo]/.test(nucleo)
     ? nucleo.replace(/[aeo]/, (vocal) => CON_TILDE[vocal])
-    : nucleo.replace(/[iu](?=[^iu]*$)/, (vocal) => CON_TILDE[vocal]);
+    : acentuarUltimaDebil(nucleo);
 
 export const nucleos = (palabra: string) =>
   partir(palabra).filter((_, posicion) => esNucleo(posicion));

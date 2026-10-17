@@ -39,6 +39,17 @@ describe('expandirDiccionario', () => {
     });
   });
 
+  it('el hijo puede anular el hiato heredado', () => {
+    const diccionario: Diccionario = new Map([
+      ['padre', { hiato: true, hijos: ['hijo'] }],
+      ['hijo', { hiato: false }],
+    ]);
+
+    expect(expandirDiccionario(diccionario).get('hijo')).toEqual({
+      hiato: false,
+    });
+  });
+
   it('no modifica el diccionario original', () => {
     const diccionario: Diccionario = new Map([
       ['mecer', { zc: false, hijos: ['remecer'] }],

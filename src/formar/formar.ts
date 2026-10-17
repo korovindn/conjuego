@@ -1,4 +1,5 @@
 import { alternar } from './alternar';
+import { acentuarHiato } from './hiato';
 import { porClase } from '../helpers';
 import { Ajustes, Clase } from '../types';
 import { resolverTilde } from './tilde';
@@ -12,7 +13,11 @@ export const formar = (
 ) =>
   resolverTilde(
     unir(
-      alternar(raiz, clase, desinencia, ajustes.alternancia),
+      acentuarHiato(
+        alternar(raiz, clase, desinencia, ajustes.alternancia),
+        desinencia,
+        ajustes.hiato,
+      ),
       clase,
       desinencia,
       ajustes,
