@@ -17,7 +17,7 @@ const SIN_TILDE: Record<string, string> = {
   ú: 'u',
 };
 
-const llevaTilde = (texto: string) => TILDE.test(texto);
+export const llevaTilde = (texto: string) => TILDE.test(texto);
 const quitarTilde = (palabra: string) =>
   palabra.replace(TILDE, (vocal) => SIN_TILDE[vocal]);
 const terminaEnVocalNS = (palabra: string) => /[aeiouáéíóúns]$/.test(palabra);

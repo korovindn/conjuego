@@ -1,4 +1,4 @@
-import { ortografiarPorClase } from '../ortografia';
+import { formarPorClase } from '../formar';
 import { Ajustes, Celda, Clase, Paradigma } from '../types';
 
 export const imperfecto = (
@@ -6,7 +6,7 @@ export const imperfecto = (
   clase: Clase,
   ajustes: Ajustes = {},
 ): Paradigma => {
-  const forma = ortografiarPorClase(raiz, clase, ajustes);
+  const forma = formarPorClase(raiz, clase, ajustes);
 
   return {
     [Celda.PRIMERA_SINGULAR]: forma('ába', 'ía', 'ía'),

@@ -1,4 +1,4 @@
-import { agregarEnclitico, ortografiarPorClase } from '../ortografia';
+import { agregarEnclitico, formarPorClase } from '../formar';
 import { Ajustes, Clase } from '../types';
 
 const pronominalizar = (forma: string, pronominal: boolean) =>
@@ -11,7 +11,7 @@ export const infinitivo = (
   ajustes: Ajustes = {},
 ) => {
   return pronominalizar(
-    ortografiarPorClase(raiz, clase, ajustes)('ár', 'ér', 'ír'),
+    formarPorClase(raiz, clase, ajustes)('ár', 'ér', 'ír'),
     pronominal,
   );
 };
@@ -23,7 +23,7 @@ export const gerundio = (
   ajustes: Ajustes = {},
 ) => {
   return pronominalizar(
-    ortografiarPorClase(raiz, clase, ajustes)('ándo', 'iéndo', 'iéndo'),
+    formarPorClase(raiz, clase, ajustes)('ándo', 'iéndo', 'iéndo'),
     pronominal,
   );
 };
@@ -33,5 +33,5 @@ export const participioPasado = (
   clase: Clase,
   ajustes: Ajustes = {},
 ) => {
-  return ortografiarPorClase(raiz, clase, ajustes)('ádo', 'ído', 'ído');
+  return formarPorClase(raiz, clase, ajustes)('ádo', 'ído', 'ído');
 };

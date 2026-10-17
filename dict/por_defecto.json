@@ -1,10 +1,850 @@
 {
-  "cocer": { "zc": false, "hijos": ["descocer", "escocer", "recocer"] },
+  "abuñolar": {
+    "alternancia": "o>ue"
+  },
+  "acrecentar": {
+    "alternancia": "e>ie"
+  },
+  "adestrar": {
+    "alternancia": "e>ie"
+  },
+  "adormentar": {
+    "alternancia": "e>ie"
+  },
+  "alebrar": {
+    "alternancia": "e>ie"
+  },
+  "alentar": {
+    "alternancia": "e>ie",
+    "hijos": ["desalentar"]
+  },
+  "almorzar": {
+    "alternancia": "o>ue"
+  },
+  "amoblar": {
+    "alternancia": "o>ue",
+    "hijos": ["desamoblar"]
+  },
+  "amolar": {
+    "alternancia": "o>ue"
+  },
+  "aneblar": {
+    "alternancia": "e>ie"
+  },
+  "apacentar": {
+    "alternancia": "e>ie"
+  },
+  "apostar": {
+    "alternancia": "o>ue"
+  },
+  "apretar": {
+    "alternancia": "e>ie",
+    "hijos": ["desapretar", "reapretar"]
+  },
+  "arrendar": {
+    "alternancia": "e>ie",
+    "hijos": ["desarrendar", "subarrendar"]
+  },
+  "arrepentir": {
+    "alternancia": "e>ie/i"
+  },
+  "aspaventar": {
+    "alternancia": "e>ie"
+  },
+  "atestar": {
+    "alternancia": "e>ie"
+  },
+  "azolar": {
+    "alternancia": "o>ue"
+  },
+  "bendecir": {
+    "alternancia": "e>i"
+  },
+  "calentar": {
+    "alternancia": "e>ie",
+    "hijos": ["precalentar", "recalentar", "sobrecalentar"]
+  },
+  "cegar": {
+    "alternancia": "e>ie"
+  },
+  "ceñir": {
+    "alternancia": "e>i",
+    "hijos": ["desceñir", "receñir"]
+  },
+  "cerner": {
+    "alternancia": "e>ie"
+  },
+  "cernir": {
+    "alternancia": "e>ie",
+    "hijos": ["concernir", "discernir"]
+  },
+  "cerrar": {
+    "alternancia": "e>ie",
+    "hijos": ["descerrar", "desencerrar", "encerrar", "entrecerrar"]
+  },
+  "certar": {
+    "abstracto": true,
+    "alternancia": "e>ie",
+    "hijos": ["acertar", "concertar", "desacertar", "desconcertar"]
+  },
+  "cimentar": {
+    "alternancia": "e>ie",
+    "hijos": ["descimentar"]
+  },
+  "clocar": {
+    "alternancia": "o>ue",
+    "hijos": ["aclocar", "enclocar"]
+  },
+  "cocer": {
+    "alternancia": "o>ue",
+    "hijos": ["descocer", "escocer", "precocer", "recocer"],
+    "zc": false
+  },
+  "colar": {
+    "alternancia": "o>ue",
+    "hijos": ["escolar", "recolar", "trascolar"]
+  },
+  "colgar": {
+    "alternancia": "o>ue",
+    "hijos": ["acolgar", "descolgar"]
+  },
+  "comendar": {
+    "abstracto": true,
+    "alternancia": "e>ie",
+    "hijos": ["encomendar", "recomendar"]
+  },
+  "comenzar": {
+    "alternancia": "e>ie",
+    "hijos": ["encomenzar", "recomenzar"]
+  },
+  "concebir": {
+    "alternancia": "e>i",
+    "hijos": ["preconcebir"]
+  },
+  "confesar": {
+    "alternancia": "e>ie"
+  },
+  "contar": {
+    "alternancia": "o>ue",
+    "hijos": ["descontar", "recontar", "redescontar"]
+  },
+  "contrar": {
+    "abstracto": true,
+    "alternancia": "o>ue",
+    "hijos": ["desencontrar", "encontrar", "reencontrar", "rescontrar"]
+  },
+  "cordar": {
+    "abstracto": true,
+    "alternancia": "o>ue",
+    "hijos": [
+      "acordar",
+      "concordar",
+      "desacordar",
+      "descordar",
+      "desencordar",
+      "discordar",
+      "encordar",
+      "recordar",
+      "trascordar"
+    ]
+  },
+  "cornar": {
+    "abstracto": true,
+    "alternancia": "o>ue",
+    "hijos": ["acornar", "descornar", "mancornar"]
+  },
+  "costar": {
+    "alternancia": "o>ue",
+    "hijos": ["acostar", "recostar"]
+  },
+  "decir": {
+    "alternancia": "e>i",
+    "hijos": [
+      "condecir",
+      "contradecir",
+      "desdecir",
+      "entredecir",
+      "interdecir",
+      "predecir",
+      "redecir"
+    ]
+  },
+  "dedolar": {
+    "alternancia": "o>ue"
+  },
+  "defender": {
+    "alternancia": "e>ie",
+    "hijos": ["autodefender"]
+  },
+  "degollar": {
+    "alternancia": "o>ue"
+  },
+  "denostar": {
+    "alternancia": "o>ue"
+  },
+  "dentar": {
+    "alternancia": "e>ie",
+    "hijos": ["desdentar", "endentar"]
+  },
+  "derretir": {
+    "alternancia": "e>i"
+  },
+  "desaforar": {
+    "alternancia": "o>ue"
+  },
+  "descollar": {
+    "alternancia": "o>ue"
+  },
+  "desflocar": {
+    "alternancia": "o>ue"
+  },
+  "desleír": {
+    "alternancia": "e>i"
+  },
+  "deslendrar": {
+    "alternancia": "e>ie"
+  },
+  "desmembrar": {
+    "alternancia": "e>ie"
+  },
+  "desollar": {
+    "alternancia": "o>ue"
+  },
+  "desosar": {
+    "alternancia": "o>hue"
+  },
+  "despertar": {
+    "alternancia": "e>ie"
+  },
+  "doler": {
+    "alternancia": "o>ue",
+    "hijos": ["condoler"]
+  },
+  "dormir": {
+    "alternancia": "o>ue/u",
+    "hijos": ["adormir", "entredormir"]
+  },
+  "embestir": {
+    "alternancia": "e>i"
+  },
+  "emparentar": {
+    "alternancia": "e>ie"
+  },
+  "emporcar": {
+    "alternancia": "o>ue"
+  },
+  "encender": {
+    "alternancia": "e>ie"
+  },
+  "encorar": {
+    "alternancia": "o>ue"
+  },
+  "encovar": {
+    "alternancia": "o>ue",
+    "hijos": ["desencovar"]
+  },
+  "engreír": {
+    "alternancia": "e>i"
+  },
+  "engrosar": {
+    "alternancia": "o>ue",
+    "hijos": ["desengrosar"]
+  },
+  "enlenzar": {
+    "alternancia": "e>ie"
+  },
+  "enllocar": {
+    "alternancia": "o>ue"
+  },
+  "enmerdar": {
+    "alternancia": "e>ie"
+  },
+  "ensangrentar": {
+    "alternancia": "e>ie"
+  },
+  "entortar": {
+    "alternancia": "o>ue"
+  },
+  "erguir": {
+    "alternancia": "e>i"
+  },
+  "errar": {
+    "alternancia": "e>ye"
+  },
+  "escarmentar": {
+    "alternancia": "e>ie"
+  },
+  "estregar": {
+    "alternancia": "e>ie",
+    "hijos": ["restregar"]
+  },
+  "ferir": {
+    "abstracto": true,
+    "alternancia": "e>ie/i",
+    "hijos": [
+      "circunferir",
+      "conferir",
+      "deferir",
+      "diferir",
+      "inferir",
+      "interferir",
+      "manferir",
+      "preferir",
+      "proferir",
+      "referir",
+      "transferir",
+      "trasferir"
+    ]
+  },
+  "ferrar": {
+    "alternancia": "e>ie"
+  },
+  "forzar": {
+    "alternancia": "o>ue",
+    "hijos": ["desforzar", "esforzar", "reforzar"]
+  },
+  "fregar": {
+    "alternancia": "e>ie",
+    "hijos": ["refregar", "transfregar", "trasfregar"]
+  },
+  "freír": {
+    "alternancia": "e>i",
+    "hijos": ["refreír", "sofreír"]
+  },
+  "gemir": {
+    "alternancia": "e>i"
+  },
+  "gerir": {
+    "abstracto": true,
+    "alternancia": "e>ie/i",
+    "hijos": ["digerir", "ingerir", "sugerir"]
+  },
+  "gobernar": {
+    "alternancia": "e>ie",
+    "hijos": ["desgobernar"]
+  },
+  "gorar": {
+    "abstracto": true,
+    "alternancia": "o>ue",
+    "hijos": ["agorar", "engorar"]
+  },
+  "hacendar": {
+    "alternancia": "e>ie"
+  },
+  "heder": {
+    "alternancia": "e>ie"
+  },
+  "helar": {
+    "alternancia": "e>ie",
+    "hijos": ["deshelar"]
+  },
+  "henchir": {
+    "alternancia": "e>i",
+    "hijos": ["rehenchir"]
+  },
+  "hender": {
+    "alternancia": "e>ie"
+  },
+  "hendir": {
+    "alternancia": "e>ie"
+  },
+  "heñir": {
+    "alternancia": "e>i"
+  },
+  "herbar": {
+    "alternancia": "e>ie",
+    "hijos": ["desherbar"]
+  },
+  "herir": {
+    "alternancia": "e>ie/i",
+    "hijos": ["adherir", "malherir", "reherir", "zaherir"]
+  },
+  "herrar": {
+    "alternancia": "e>ie",
+    "hijos": ["desherrar", "reherrar"]
+  },
+  "herventar": {
+    "alternancia": "e>ie"
+  },
+  "hervir": {
+    "alternancia": "e>ie/i",
+    "hijos": ["rehervir"]
+  },
+  "hestar": {
+    "abstracto": true,
+    "alternancia": "e>ie",
+    "hijos": ["enhestar", "inhestar"]
+  },
+  "holgar": {
+    "alternancia": "o>ue"
+  },
+  "hollar": {
+    "alternancia": "o>ue",
+    "hijos": ["rehollar"]
+  },
+  "incensar": {
+    "alternancia": "e>ie"
+  },
+  "infernar": {
+    "alternancia": "e>ie"
+  },
+  "injerir": {
+    "alternancia": "e>ie/i"
+  },
+  "inserir": {
+    "alternancia": "e>ie/i"
+  },
+  "invernar": {
+    "alternancia": "e>ie",
+    "hijos": ["desinvernar"]
+  },
+  "jamerdar": {
+    "alternancia": "e>ie"
+  },
+  "jugar": {
+    "alternancia": "u>ue",
+    "hijos": ["rejugar"]
+  },
+  "legir": {
+    "abstracto": true,
+    "alternancia": "e>i",
+    "hijos": ["colegir", "elegir", "preelegir", "recolegir", "reelegir"]
+  },
+  "llover": {
+    "alternancia": "o>ue"
+  },
+  "maldecir": {
+    "alternancia": "e>i"
+  },
+  "manifestar": {
+    "alternancia": "e>ie"
+  },
+  "medir": {
+    "alternancia": "e>i",
+    "hijos": ["acomedir", "comedir", "descomedir", "desmedir", "remedir"]
+  },
+  "melar": {
+    "alternancia": "e>ie",
+    "hijos": ["amelar", "desmelar", "enmelar"]
+  },
+  "mendar": {
+    "abstracto": true,
+    "alternancia": "e>ie",
+    "hijos": ["enmendar", "remendar"]
+  },
+  "mentar": {
+    "alternancia": "e>ie"
+  },
+  "mentir": {
+    "alternancia": "e>ie/i",
+    "hijos": ["desmentir"]
+  },
+  "merendar": {
+    "alternancia": "e>ie"
+  },
+  "moler": {
+    "alternancia": "o>ue",
+    "hijos": ["demoler", "remoler"]
+  },
+  "morder": {
+    "alternancia": "o>ue",
+    "hijos": ["remorder"]
+  },
+  "morir": {
+    "alternancia": "o>ue/u",
+    "hijos": ["premorir"]
+  },
+  "mostrar": {
+    "alternancia": "o>ue",
+    "hijos": ["amostrar", "demostrar"]
+  },
+  "mover": {
+    "alternancia": "o>ue",
+    "hijos": ["amover", "conmover", "promover", "remover"]
+  },
+  "negar": {
+    "alternancia": "e>ie",
+    "hijos": ["abnegar", "denegar", "derrenegar", "desnegar", "renegar"]
+  },
+  "nevar": {
+    "alternancia": "e>ie",
+    "hijos": ["desnevar"]
+  },
+  "oler": {
+    "alternancia": "o>hue",
+    "hijos": ["maloler"]
+  },
+  "pedir": {
+    "alternancia": "e>i",
+    "hijos": ["despedir", "expedir", "impedir", "reexpedir"]
+  },
+  "pedrar": {
+    "abstracto": true,
+    "alternancia": "e>ie",
+    "hijos": ["desempedrar", "despedrar", "empedrar"]
+  },
+  "pensar": {
+    "alternancia": "e>ie",
+    "hijos": ["repensar"]
+  },
+  "perder": {
+    "alternancia": "e>ie"
+  },
+  "pernar": {
+    "abstracto": true,
+    "alternancia": "e>ie",
+    "hijos": ["apernar", "despernar", "entrepernar"]
+  },
+  "petir": {
+    "abstracto": true,
+    "alternancia": "e>i",
+    "hijos": ["competir", "repetir"]
+  },
+  "pezar": {
+    "abstracto": true,
+    "alternancia": "e>ie",
+    "hijos": ["despezar", "empezar"]
+  },
+  "plegar": {
+    "alternancia": "e>ie",
+    "hijos": ["desplegar", "replegar"]
+  },
+  "poblar": {
+    "alternancia": "o>ue",
+    "hijos": ["despoblar", "repoblar", "sobrepoblar", "superpoblar"]
+  },
+  "poder": {
+    "alternancia": "o>ue"
+  },
+  "preterir": {
+    "alternancia": "e>i"
+  },
+  "probar": {
+    "alternancia": "o>ue",
+    "hijos": ["aprobar", "comprobar", "desaprobar", "improbar", "reprobar"]
+  },
+  "quebrar": {
+    "alternancia": "e>ie",
+    "hijos": ["aliquebrar", "perniquebrar", "requebrar", "resquebrar"]
+  },
+  "querer": {
+    "alternancia": "e>ie",
+    "hijos": ["bienquerer", "desquerer", "malquerer"]
+  },
+  "quirir": {
+    "abstracto": true,
+    "alternancia": "i>ie",
+    "hijos": ["adquirir", "inquirir", "readquirir"]
+  },
+  "recentar": {
+    "alternancia": "e>ie"
+  },
+  "regar": {
+    "alternancia": "e>ie",
+    "hijos": ["sorregar"]
+  },
+  "regimentar": {
+    "alternancia": "e>ie"
+  },
+  "regir": {
+    "alternancia": "e>i",
+    "hijos": ["corregir"]
+  },
+  "regoldar": {
+    "alternancia": "o>ue"
+  },
+  "reír": {
+    "alternancia": "e>i",
+    "hijos": ["sonreír"]
+  },
+  "rendir": {
+    "alternancia": "e>i"
+  },
+  "renovar": {
+    "alternancia": "o>ue"
+  },
+  "reñir": {
+    "alternancia": "e>i"
+  },
+  "requerir": {
+    "alternancia": "e>ie/i"
+  },
+  "resollar": {
+    "alternancia": "o>ue"
+  },
+  "rodar": {
+    "alternancia": "o>ue",
+    "hijos": ["enrodar", "sonrodar"]
+  },
+  "rogar": {
+    "alternancia": "o>ue"
+  },
+  "salpimentar": {
+    "alternancia": "e>ie"
+  },
+  "sarmentar": {
+    "alternancia": "e>ie",
+    "hijos": ["ensarmentar"]
+  },
+  "scender": {
+    "abstracto": true,
+    "alternancia": "e>ie",
+    "hijos": [
+      "ascender",
+      "condescender",
+      "descender",
+      "transcender",
+      "trascender"
+    ]
+  },
+  "segar": {
+    "alternancia": "e>ie",
+    "hijos": ["asosegar", "desasosegar", "desosegar", "resegar", "sosegar"]
+  },
+  "seguir": {
+    "alternancia": "e>i",
+    "hijos": ["conseguir", "perseguir", "proseguir", "reseguir", "subseguir"]
+  },
+  "sembrar": {
+    "alternancia": "e>ie",
+    "hijos": ["resembrar", "sobresembrar"]
+  },
+  "sementar": {
+    "alternancia": "e>ie"
+  },
+  "sentar": {
+    "alternancia": "e>ie",
+    "hijos": ["asentar", "desasentar"]
+  },
+  "sentir": {
+    "alternancia": "e>ie/i",
+    "hijos": [
+      "asentir",
+      "consentir",
+      "desconsentir",
+      "disentir",
+      "presentir",
+      "resentir"
+    ]
+  },
+  "serrar": {
+    "alternancia": "e>ie",
+    "hijos": ["aserrar"]
+  },
+  "servir": {
+    "alternancia": "e>i"
+  },
+  "solar": {
+    "alternancia": "o>ue",
+    "hijos": [
+      "asolar",
+      "consolar",
+      "desconsolar",
+      "desolar",
+      "sobresolar",
+      "subsolar"
+    ]
+  },
+  "soldar": {
+    "alternancia": "o>ue",
+    "hijos": ["desoldar"]
+  },
+  "soler": {
+    "alternancia": "o>ue"
+  },
+  "soltar": {
+    "alternancia": "o>ue"
+  },
+  "solver": {
+    "abstracto": true,
+    "alternancia": "o>ue",
+    "hijos": ["absolver", "disolver", "ensolver", "resolver"]
+  },
+  "sonar": {
+    "alternancia": "o>ue",
+    "hijos": [
+      "asonar",
+      "consonar",
+      "disonar",
+      "grandisonar",
+      "malsonar",
+      "resonar"
+    ]
+  },
+  "soñar": {
+    "alternancia": "o>ue",
+    "hijos": ["ensoñar", "trasoñar"]
+  },
+  "streñir": {
+    "abstracto": true,
+    "alternancia": "e>i",
+    "hijos": ["astreñir", "constreñir", "estreñir"]
+  },
+  "temblar": {
+    "alternancia": "e>ie",
+    "hijos": ["retemblar"]
+  },
+  "tender": {
+    "alternancia": "e>ie",
+    "hijos": [
+      "atender",
+      "coextender",
+      "contender",
+      "desatender",
+      "desentender",
+      "distender",
+      "entender",
+      "extender",
+      "malentender",
+      "sobreentender",
+      "sobrentender",
+      "subentender",
+      "subtender",
+      "superentender"
+    ]
+  },
+  "tener": {
+    "alternancia": "e>ie",
+    "hijos": [
+      "abstener",
+      "atener",
+      "contener",
+      "detener",
+      "entretener",
+      "mantener",
+      "manutener",
+      "obtener",
+      "retener",
+      "sostener"
+    ]
+  },
+  "tentar": {
+    "alternancia": "e>ie",
+    "hijos": ["desatentar", "retentar"]
+  },
+  "teñir": {
+    "alternancia": "e>i",
+    "hijos": ["desteñir", "reteñir"]
+  },
+  "terrar": {
+    "abstracto": true,
+    "alternancia": "e>ie",
+    "hijos": ["desaterrar", "desenterrar", "desterrar", "enterrar", "soterrar"]
+  },
+  "torcer": {
+    "alternancia": "o>ue",
+    "hijos": ["contorcer", "destorcer", "retorcer"]
+  },
+  "tostar": {
+    "alternancia": "o>ue",
+    "hijos": ["retostar"]
+  },
+  "trasegar": {
+    "alternancia": "e>ie"
+  },
+  "travesar": {
+    "alternancia": "e>ie",
+    "hijos": ["atravesar", "desatravesar"]
+  },
+  "trocar": {
+    "alternancia": "o>ue",
+    "hijos": ["destrocar", "trastrocar"]
+  },
+  "tronar": {
+    "alternancia": "o>ue",
+    "hijos": ["atronar", "retronar"]
+  },
+  "tropezar": {
+    "alternancia": "e>ie"
+  },
+  "venir": {
+    "alternancia": "e>ie/i",
+    "hijos": [
+      "advenir",
+      "aprevenir",
+      "avenir",
+      "contravenir",
+      "convenir",
+      "desavenir",
+      "desconvenir",
+      "devenir",
+      "disconvenir",
+      "intervenir",
+      "invenir",
+      "prevenir",
+      "provenir",
+      "reconvenir",
+      "revenir",
+      "sobrevenir",
+      "subvenir",
+      "supervenir"
+    ]
+  },
+  "ventar": {
+    "alternancia": "e>ie",
+    "hijos": ["aventar", "desventar", "reaventar", "reventar"]
+  },
+  "vergonzar": {
+    "abstracto": true,
+    "alternancia": "o>ue",
+    "hijos": ["avergonzar", "desvergonzar"]
+  },
+  "verter": {
+    "alternancia": "e>ie",
+    "hijos": ["reverter", "sobreverter", "trasverter"]
+  },
+  "vertir": {
+    "abstracto": true,
+    "alternancia": "e>ie/i",
+    "hijos": [
+      "advertir",
+      "controvertir",
+      "convertir",
+      "desadvertir",
+      "desinvertir",
+      "divertir",
+      "invertir",
+      "pervertir",
+      "reconvertir",
+      "reinvertir",
+      "revertir",
+      "subvertir"
+    ]
+  },
+  "vestir": {
+    "alternancia": "e>i",
+    "hijos": [
+      "desvestir",
+      "envestir",
+      "investir",
+      "revestir",
+      "sobrevestir",
+      "travestir"
+    ]
+  },
+  "volar": {
+    "alternancia": "o>ue",
+    "hijos": ["circunvolar", "revolar", "sobrevolar", "trasvolar"]
+  },
+  "volcar": {
+    "alternancia": "o>ue",
+    "hijos": ["revolcar"]
+  },
+  "volver": {
+    "alternancia": "o>ue",
+    "hijos": ["desenvolver", "desvolver", "devolver", "envolver", "revolver"]
+  },
   "facer": {
     "abstracto": true,
     "zc": false,
     "hijos": ["desfacer", "satisfacer"]
   },
-  "hacer": { "zc": false, "hijos": ["contrahacer", "deshacer", "rehacer"] },
-  "mecer": { "zc": false, "hijos": ["remecer"] }
+  "hacer": {
+    "zc": false,
+    "hijos": ["contrahacer", "deshacer", "rehacer"]
+  },
+  "mecer": {
+    "zc": false,
+    "hijos": ["remecer"]
+  }
 }

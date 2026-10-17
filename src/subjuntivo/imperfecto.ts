@@ -1,5 +1,5 @@
 import { porClase } from '../helpers';
-import { ortografiar } from '../ortografia';
+import { formar } from '../formar';
 import {
   Ajustes,
   Celda,
@@ -16,7 +16,7 @@ export const imperfecto = (
 ): Paradigma => {
   const tema = porClase('á', 'ié', 'ié')(clase);
   const forma = (persona: string) =>
-    ortografiar(raiz, clase, `${tema}${variant}${persona}`, ajustes);
+    formar(raiz, clase, `${tema}${variant}${persona}`, ajustes);
 
   return {
     [Celda.PRIMERA_SINGULAR]: forma(''),

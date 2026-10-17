@@ -1,5 +1,5 @@
 import { mapearParadigma } from '../helpers';
-import { ortografiarPorClase } from '../ortografia';
+import { formarPorClase } from '../formar';
 import {
   Ajustes,
   Celda,
@@ -30,7 +30,7 @@ export const imperativo = (
       [Celda.SEGUNDA_SINGULAR_VOSEO]: indicativoPresente[
         Celda.SEGUNDA_SINGULAR_VOSEO
       ].slice(0, -1),
-      [Celda.SEGUNDA_PLURAL]: ortografiarPorClase(raiz, clase, ajustes)(
+      [Celda.SEGUNDA_PLURAL]: formarPorClase(raiz, clase, ajustes)(
         'ád',
         'éd',
         'íd',

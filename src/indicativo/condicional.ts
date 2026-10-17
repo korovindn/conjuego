@@ -1,4 +1,4 @@
-import { ortografiar } from '../ortografia';
+import { formar } from '../formar';
 import { Ajustes, Celda, Clase, Paradigma } from '../types';
 
 export const condicional = (
@@ -7,7 +7,7 @@ export const condicional = (
   ajustes: Ajustes = {},
 ): Paradigma => {
   const forma = (terminacion: string) =>
-    ortografiar(raiz, clase, `${clase}${terminacion}`, ajustes);
+    formar(raiz, clase, `${clase}${terminacion}`, ajustes);
 
   return {
     [Celda.PRIMERA_SINGULAR]: forma('ía'),

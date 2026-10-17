@@ -1,4 +1,5 @@
 export {
+  Alternancia,
   Diccionario,
   FORMA_NO_PERSONAL,
   FormaNoPersonal,

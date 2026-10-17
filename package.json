@@ -8,6 +8,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "rm -rf dist && tsc -p tsconfig.build.json",
+    "build:dict": "node scripts/build-dict.js && npm run format",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",

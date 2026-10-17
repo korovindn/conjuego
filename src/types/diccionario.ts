@@ -22,6 +22,6 @@ export interface EntradaVerbo {
   formas?: Partial<Record<Celda, Forma>>;
 }
 
-export type Ajustes = Pick<EntradaVerbo, 'zc'>;
+export type Ajustes = Pick<EntradaVerbo, 'zc' | 'alternancia'>;
 
 export type Diccionario = ReadonlyMap<string, EntradaVerbo>;

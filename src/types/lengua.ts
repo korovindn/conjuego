@@ -97,4 +97,6 @@ export enum Alternancia {
   O_UE_U = 'o>ue/u',
   U_UE = 'u>ue',
   I_IE = 'i>ie',
+  O_HUE = 'o>hue',
+  E_YE = 'e>ye',
 }

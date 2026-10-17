@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { Clase } from '../types';
-import { ortografiar } from './ortografiar';
+import { formar } from './formar';
 
 describe('ortografiar', () => {
   it.each([
@@ -20,6 +20,6 @@ describe('ortografiar', () => {
     ['gruñ', Clase.IR, 'iéron', 'gruñeron'],
     ['venc', Clase.ER, 'ámos', 'venzamos'],
   ] as const)('%s + %s → %s', (raiz, clase, desinencia, esperado) => {
-    expect(ortografiar(raiz, clase, desinencia)).toBe(esperado);
+    expect(formar(raiz, clase, desinencia)).toBe(esperado);
   });
 });

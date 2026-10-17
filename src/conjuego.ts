@@ -24,7 +24,7 @@ import {
 } from './imperativo';
 import { infinitivo, gerundio, participioPasado } from './no-personal';
 import { PRONOMINAL } from './const';
-import { agregarEnclitico } from './ortografia';
+import { agregarEnclitico } from './formar';
 
 let d: Diccionario | undefined;
 
@@ -42,7 +42,10 @@ export const conjuego = (verbo: string): Tabla => {
   const entrada =
     d.get(normalizado) ??
     (pronominal ? d.get(normalizado.slice(0, -2)) : undefined);
-  const ajustes: Ajustes = { zc: entrada?.zc };
+  const ajustes: Ajustes = {
+    zc: entrada?.zc,
+    alternancia: entrada?.alternancia,
+  };
 
   const indicativo: Tabla[Modo.INDICATIVO] = crearIndicativo(
     raiz,
