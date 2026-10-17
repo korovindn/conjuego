@@ -3,7 +3,6 @@ import {
   Ajustes,
   Celda,
   Clase,
-  Forma,
   Modo,
   SubjuntivoImperfectoVariant,
   Tabla,
@@ -16,7 +15,7 @@ export const subjuntivo = (
   raiz: string,
   clase: Clase,
   ajustes: Ajustes = {},
-): Tabla[Modo.SUBJUNTIVO] => ({
+): Tabla<string>[Modo.SUBJUNTIVO] => ({
   [Tiempo.PRESENTE]: presente(raiz, clase, ajustes),
   [Tiempo.IMPERFECTO]: {
     [SubjuntivoImperfectoVariant.RA]: imperfecto(
@@ -35,9 +34,9 @@ export const subjuntivo = (
 });
 
 export const mapear = (
-  tabla: Tabla[Modo.SUBJUNTIVO],
+  tabla: Tabla<string>[Modo.SUBJUNTIVO],
   mapeador: (
-    forma: Forma,
+    forma: string,
     tiempo: Tiempo.PRESENTE | Tiempo.IMPERFECTO,
     celda: Celda,
     variant?: SubjuntivoImperfectoVariant,

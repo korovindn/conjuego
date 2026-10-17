@@ -1,37 +1,38 @@
-import { agregarEnclitico, formarPorClase } from '../formar';
-import { Ajustes, Clase } from '../types';
+import { formarPorClase } from '../formar';
+import {
+  Ajustes,
+  Clase,
+  FORMA_NO_PERSONAL,
+  FormaNoPersonal,
+  Tabla,
+} from '../types';
 
-const pronominalizar = (forma: string, pronominal: boolean) =>
-  pronominal ? agregarEnclitico(forma, 'se') : forma;
+export const infinitivo = (raiz: string, clase: Clase, ajustes: Ajustes = {}) =>
+  formarPorClase(raiz, clase, ajustes)('ár', 'ér', 'ír');
 
-export const infinitivo = (
-  raiz: string,
-  clase: Clase,
-  pronominal: boolean,
-  ajustes: Ajustes = {},
-) => {
-  return pronominalizar(
-    formarPorClase(raiz, clase, ajustes)('ár', 'ér', 'ír'),
-    pronominal,
-  );
-};
-
-export const gerundio = (
-  raiz: string,
-  clase: Clase,
-  pronominal: boolean,
-  ajustes: Ajustes = {},
-) => {
-  return pronominalizar(
-    formarPorClase(raiz, clase, ajustes)('ándo', 'iéndo', 'iéndo'),
-    pronominal,
-  );
-};
+export const gerundio = (raiz: string, clase: Clase, ajustes: Ajustes = {}) =>
+  formarPorClase(raiz, clase, ajustes)('ándo', 'iéndo', 'iéndo');
 
 export const participioPasado = (
   raiz: string,
   clase: Clase,
   ajustes: Ajustes = {},
-) => {
-  return formarPorClase(raiz, clase, ajustes)('ádo', 'ído', 'ído');
-};
+) => formarPorClase(raiz, clase, ajustes)('ádo', 'ído', 'ído');
+
+export const mapear = (
+  tabla: Tabla<string>[typeof FORMA_NO_PERSONAL],
+  mapeador: (forma: string, tipo: FormaNoPersonal) => string,
+): Tabla<string>[typeof FORMA_NO_PERSONAL] => ({
+  [FormaNoPersonal.INFINITIVO]: mapeador(
+    tabla[FormaNoPersonal.INFINITIVO],
+    FormaNoPersonal.INFINITIVO,
+  ),
+  [FormaNoPersonal.GERUNDIO]: mapeador(
+    tabla[FormaNoPersonal.GERUNDIO],
+    FormaNoPersonal.GERUNDIO,
+  ),
+  [FormaNoPersonal.PARTICIPIO_PASADO]: mapeador(
+    tabla[FormaNoPersonal.PARTICIPIO_PASADO],
+    FormaNoPersonal.PARTICIPIO_PASADO,
+  ),
+});

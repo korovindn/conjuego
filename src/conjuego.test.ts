@@ -177,8 +177,22 @@ describe('conjuego', () => {
         new Map([
           ['mecer', { zc: false, hijos: ['remecer'] }],
           ['facer', { abstracto: true, zc: false, hijos: ['satisfacer'] }],
+          ['ver', { hijos: ['prever'] }],
         ]),
       );
+    });
+
+    it('conserva la sílaba tónica del padre', () => {
+      const tabla = conjuego('prever');
+
+      expect(tabla[Modo.INDICATIVO][Tiempo.PRESENTE]).toMatchObject({
+        [Celda.SEGUNDA_SINGULAR]: 'prevés',
+        [Celda.SEGUNDA_PLURAL]: 'prevéis',
+        [Celda.TERCERA_PLURAL]: 'prevén',
+      });
+      expect(
+        tabla[Modo.IMPERATIVO][Polaridad.AFIRMATIVA][Celda.SEGUNDA_SINGULAR],
+      ).toBe('prevé');
     });
 
     it.each([

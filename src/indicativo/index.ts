@@ -1,5 +1,5 @@
 import { mapearParadigma } from '../helpers';
-import { Ajustes, Celda, Clase, Forma, Modo, Tabla, Tiempo } from '../types';
+import { Ajustes, Celda, Clase, Modo, Tabla, Tiempo } from '../types';
 import { condicional } from './condicional';
 import { futuro } from './futuro';
 import { imperfecto } from './imperfecto';
@@ -10,7 +10,7 @@ export const indicativo = (
   raiz: string,
   clase: Clase,
   ajustes: Ajustes = {},
-): Tabla[Modo.INDICATIVO] => ({
+): Tabla<string>[Modo.INDICATIVO] => ({
   [Tiempo.PRESENTE]: presente(raiz, clase, ajustes),
   [Tiempo.PRETERITO]: preterito(raiz, clase, ajustes),
   [Tiempo.IMPERFECTO]: imperfecto(raiz, clase, ajustes),
@@ -19,8 +19,8 @@ export const indicativo = (
 });
 
 export const mapear = (
-  tabla: Tabla[Modo.INDICATIVO],
-  mapeador: (forma: Forma, tiempo: Tiempo, celda: Celda) => string,
+  tabla: Tabla<string>[Modo.INDICATIVO],
+  mapeador: (forma: string, tiempo: Tiempo, celda: Celda) => string,
 ) => {
   return {
     [Tiempo.PRESENTE]: mapearParadigma(tabla[Tiempo.PRESENTE], (forma, celda) =>

@@ -5,7 +5,6 @@ import {
   Celda,
   CeldaImperativo,
   Clase,
-  Forma,
   Modo,
   Paradigma,
   Polaridad,
@@ -15,10 +14,10 @@ import {
 export const imperativo = (
   raiz: string,
   clase: Clase,
-  indicativoPresente: Paradigma,
-  subjuntivoPresente: Paradigma,
+  indicativoPresente: Paradigma<string>,
+  subjuntivoPresente: Paradigma<string>,
   ajustes: Ajustes = {},
-): Tabla[Modo.IMPERATIVO] => {
+): Tabla<string>[Modo.IMPERATIVO] => {
   const { [Celda.PRIMERA_SINGULAR]: _yo, ...subjuntivo } = subjuntivoPresente;
 
   return {
@@ -41,13 +40,13 @@ export const imperativo = (
 };
 
 export const mapear = (
-  tabla: Tabla[Modo.IMPERATIVO],
+  tabla: Tabla<string>[Modo.IMPERATIVO],
   mapeador: (
-    forma: Forma,
+    forma: string,
     polaridad: Polaridad,
     celda: CeldaImperativo,
   ) => string,
-): Tabla[Modo.IMPERATIVO] => {
+): Tabla<string>[Modo.IMPERATIVO] => {
   const mapearPolaridad = (polaridad: Polaridad) =>
     mapearParadigma(tabla[polaridad], (forma, celda) =>
       mapeador(forma, polaridad, celda),

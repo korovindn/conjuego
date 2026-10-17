@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { Celda, Paradigma } from '../types';
 import { mapearParadigma } from './mapear-paradigma';
 
-const paradigma: Paradigma = {
+const paradigma: Paradigma<string> = {
   [Celda.PRIMERA_SINGULAR]: 'hablo',
   [Celda.SEGUNDA_SINGULAR]: 'hablas',
   [Celda.SEGUNDA_SINGULAR_VOSEO]: 'hablás',

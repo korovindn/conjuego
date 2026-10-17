@@ -5,7 +5,7 @@ export const condicional = (
   raiz: string,
   clase: Clase,
   ajustes: Ajustes = {},
-): Paradigma => {
+): Paradigma<string> => {
   const forma = (terminacion: string) =>
     formar(raiz, clase, `${clase}${terminacion}`, ajustes);
 

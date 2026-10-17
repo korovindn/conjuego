@@ -29,19 +29,23 @@ export enum SubjuntivoImperfectoVariant {
 }
 export type CeldaImperativo = Exclude<Celda, Celda.PRIMERA_SINGULAR>;
 
-export type Forma = string; /* | [principal: string, ...variantes: string[]]*/
+export type Forma =
+  | string
+  | readonly [principal: string, ...variantes: string[]];
 
-export type Paradigma = Record<Celda, Forma>;
-export type ParadigmaImperativo = Record<CeldaImperativo, Forma>;
+export type Casilla = Forma | null;
 
-export interface Tabla {
-  [Modo.INDICATIVO]: Record<Tiempo, Paradigma>;
+export type Paradigma<F = Casilla> = Record<Celda, F>;
+export type ParadigmaImperativo<F = Casilla> = Record<CeldaImperativo, F>;
+
+export interface Tabla<F = Casilla> {
+  [Modo.INDICATIVO]: Record<Tiempo, Paradigma<F>>;
   [Modo.SUBJUNTIVO]: {
-    [Tiempo.PRESENTE]: Paradigma;
-    [Tiempo.IMPERFECTO]: Record<SubjuntivoImperfectoVariant, Paradigma>;
+    [Tiempo.PRESENTE]: Paradigma<F>;
+    [Tiempo.IMPERFECTO]: Record<SubjuntivoImperfectoVariant, Paradigma<F>>;
   };
-  [Modo.IMPERATIVO]: Record<Polaridad, ParadigmaImperativo>;
-  [FORMA_NO_PERSONAL]: Record<FormaNoPersonal, Forma>;
+  [Modo.IMPERATIVO]: Record<Polaridad, ParadigmaImperativo<F>>;
+  [FORMA_NO_PERSONAL]: Record<FormaNoPersonal, F>;
 }
 
 export type Seis<T> = readonly [T, T, T, T, T, T];

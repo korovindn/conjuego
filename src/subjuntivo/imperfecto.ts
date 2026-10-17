@@ -13,7 +13,7 @@ export const imperfecto = (
   clase: Clase,
   variant: SubjuntivoImperfectoVariant,
   ajustes: Ajustes = {},
-): Paradigma => {
+): Paradigma<string> => {
   const tema = porClase('á', 'ié', 'ié')(clase);
   const forma = (persona: string) =>
     formar(raiz, clase, `${tema}${variant}${persona}`, ajustes);

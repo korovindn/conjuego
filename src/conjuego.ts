@@ -1,13 +1,13 @@
-import { expandirDiccionario, parsearVerbo, normalizar } from './helpers';
+import { indexarPadres, parsearVerbo, normalizar } from './helpers';
 import {
   Ajustes,
+  Celda,
   Diccionario,
   Tabla,
   Modo,
   Tiempo,
   FORMA_NO_PERSONAL,
   FormaNoPersonal,
-  Celda,
   Polaridad,
 } from './types';
 import {
@@ -22,14 +22,85 @@ import {
   imperativo as crearImperativo,
   mapear as mapearImperativo,
 } from './imperativo';
-import { infinitivo, gerundio, participioPasado } from './no-personal';
-import { PRONOMINAL } from './const';
-import { agregarEnclitico } from './formar';
+import {
+  infinitivo,
+  gerundio,
+  participioPasado,
+  mapear as mapearNoPersonal,
+} from './no-personal';
+import { prefijar, pronominalizar, pronominalizarNoPersonal } from './formar';
 
-let d: Diccionario | undefined;
+let d:
+  | { diccionario: Diccionario; padres: ReadonlyMap<string, string> }
+  | undefined;
 
 export const configurar = (diccionario: Diccionario) => {
-  d = expandirDiccionario(diccionario);
+  d = { diccionario, padres: indexarPadres(diccionario) };
+};
+
+const mapearTabla = (
+  tabla: Tabla<string>,
+  personal: (forma: string, celda: Celda, polaridad?: Polaridad) => string,
+  noPersonal: (forma: string, tipo: FormaNoPersonal) => string,
+): Tabla<string> => ({
+  [Modo.INDICATIVO]: mapearIndicativo(
+    tabla[Modo.INDICATIVO],
+    (forma, _tiempo, celda) => personal(forma, celda),
+  ),
+  [Modo.SUBJUNTIVO]: mapearSubjuntivo(
+    tabla[Modo.SUBJUNTIVO],
+    (forma, _tiempo, celda) => personal(forma, celda),
+  ),
+  [Modo.IMPERATIVO]: mapearImperativo(
+    tabla[Modo.IMPERATIVO],
+    (forma, polaridad, celda) => personal(forma, celda, polaridad),
+  ),
+  [FORMA_NO_PERSONAL]: mapearNoPersonal(tabla[FORMA_NO_PERSONAL], noPersonal),
+});
+
+const conjugar = (
+  verbo: string,
+  diccionario: Diccionario,
+  padres: ReadonlyMap<string, string>,
+): Tabla<string> => {
+  const padre = padres.get(verbo);
+
+  if (padre !== undefined) {
+    const prefijo = verbo.slice(0, -padre.length);
+    const conPrefijo = (forma: string) => prefijar(prefijo, forma);
+
+    return mapearTabla(
+      conjugar(padre, diccionario, padres),
+      conPrefijo,
+      conPrefijo,
+    );
+  }
+
+  const [raiz, clase] = parsearVerbo(verbo);
+  const ajustes: Ajustes = diccionario.get(verbo) ?? {};
+  const indicativo = crearIndicativo(raiz, clase, ajustes);
+  const subjuntivo = crearSubjuntivo(raiz, clase, ajustes);
+
+  return {
+    [Modo.INDICATIVO]: indicativo,
+    [Modo.SUBJUNTIVO]: subjuntivo,
+    [Modo.IMPERATIVO]: crearImperativo(
+      raiz,
+      clase,
+      indicativo[Tiempo.PRESENTE],
+      subjuntivo[Tiempo.PRESENTE],
+      ajustes,
+    ),
+    [FORMA_NO_PERSONAL]: {
+      [FormaNoPersonal.INFINITIVO]: infinitivo(raiz, clase, ajustes),
+      [FormaNoPersonal.GERUNDIO]: gerundio(raiz, clase, ajustes),
+      [FormaNoPersonal.PARTICIPIO_PASADO]: participioPasado(
+        raiz,
+        clase,
+        ajustes,
+      ),
+    },
+  };
 };
 
 export const conjuego = (verbo: string): Tabla => {
@@ -38,60 +109,14 @@ export const conjuego = (verbo: string): Tabla => {
   }
 
   const normalizado = normalizar(verbo);
-  const [raiz, clase, pronominal] = parsearVerbo(normalizado);
-  const entrada =
-    d.get(normalizado) ??
-    (pronominal ? d.get(normalizado.slice(0, -2)) : undefined);
-  const ajustes: Ajustes = entrada ?? {};
-
-  const indicativo: Tabla[Modo.INDICATIVO] = crearIndicativo(
-    raiz,
-    clase,
-    ajustes,
-  );
-  const subjuntivo: Tabla[Modo.SUBJUNTIVO] = crearSubjuntivo(
-    raiz,
-    clase,
-    ajustes,
-  );
-  const imperativo: Tabla[Modo.IMPERATIVO] = crearImperativo(
-    raiz,
-    clase,
-    indicativo[Tiempo.PRESENTE],
-    subjuntivo[Tiempo.PRESENTE],
-    ajustes,
+  const [, , pronominal] = parsearVerbo(normalizado);
+  const tabla = conjugar(
+    pronominal ? normalizado.slice(0, -2) : normalizado,
+    d.diccionario,
+    d.padres,
   );
 
-  const aplicarPronominal = (forma: string, celda: Celda) =>
-    pronominal ? `${PRONOMINAL[celda]} ${forma}` : forma;
-
-  return {
-    [Modo.INDICATIVO]: mapearIndicativo(indicativo, (forma, _tiempo, celda) =>
-      aplicarPronominal(forma, celda),
-    ),
-    [Modo.SUBJUNTIVO]: mapearSubjuntivo(subjuntivo, (forma, _tiempo, celda) =>
-      aplicarPronominal(forma, celda),
-    ),
-    [Modo.IMPERATIVO]: mapearImperativo(
-      imperativo,
-      (forma, polaridad, celda) =>
-        pronominal && polaridad === Polaridad.AFIRMATIVA
-          ? agregarEnclitico(forma, PRONOMINAL[celda])
-          : aplicarPronominal(forma, celda),
-    ),
-    [FORMA_NO_PERSONAL]: {
-      [FormaNoPersonal.INFINITIVO]: infinitivo(
-        raiz,
-        clase,
-        pronominal,
-        ajustes,
-      ),
-      [FormaNoPersonal.GERUNDIO]: gerundio(raiz, clase, pronominal, ajustes),
-      [FormaNoPersonal.PARTICIPIO_PASADO]: participioPasado(
-        raiz,
-        clase,
-        ajustes,
-      ),
-    },
-  };
+  return pronominal
+    ? mapearTabla(tabla, pronominalizar, pronominalizarNoPersonal)
+    : tabla;
 };

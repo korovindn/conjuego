@@ -5,7 +5,7 @@ export const presente = (
   raiz: string,
   clase: Clase,
   ajustes: Ajustes = {},
-): Paradigma => {
+): Paradigma<string> => {
   const forma = formarPorClase(raiz, clase, ajustes);
 
   return {

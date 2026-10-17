@@ -43,9 +43,12 @@ const validate = (dictionary) => {
   const errors = [...parentsByChild(dictionary)].flatMap(([child, parents]) => {
     const list = [...parents].join(', ');
     return [
-      ...(dictionary[child]?.hijos
-        ? [`"${child}" has hijos but is itself a hijo of ${list}`]
-        : []),
+      ...Object.keys(dictionary[child] ?? {})
+        .filter((key) => key !== 'formas')
+        .map((key) => `"${child}" is a hijo of ${list} and defines ${key}`),
+      ...[...parents]
+        .filter((parent) => !child.endsWith(parent))
+        .map((parent) => `"${child}" does not end with its parent "${parent}"`),
       ...(parents.size > 1
         ? [`"${child}" is a hijo of several parents: ${list}`]
         : []),
