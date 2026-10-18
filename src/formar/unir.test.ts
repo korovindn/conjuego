@@ -71,6 +71,18 @@ describe('unir', () => {
   );
 
   it.each([
+    ['fosforesc', Clase.ER, 'o', 'fosforesco'],
+    ['fosforesc', Clase.ER, 'a', 'fosforesca'],
+    ['evanesc', Clase.ER, 'ámos', 'evanescámos'],
+    ['pubesc', Clase.ER, 'e', 'pubesce'],
+  ] as const)(
+    'sc ante a, o se conserva: %s + %s → %s',
+    (raiz, clase, desinencia, esperado) => {
+      expect(unir(raiz, clase, desinencia)).toBe(esperado);
+    },
+  );
+
+  it.each([
     ['le', Clase.ER, 'ió', 'leyó'],
     ['le', Clase.ER, 'iéron', 'leyéron'],
     ['le', Clase.ER, 'iéndo', 'leyéndo'],

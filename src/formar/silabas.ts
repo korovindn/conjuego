@@ -3,7 +3,7 @@ const DEBIL_TONICA = '[íú]';
 const U_SONORA = '(?:(?<![qg])u|u(?![eiéí]))';
 const DEBIL = `(?:[iü]|${U_SONORA})`;
 const NUCLEO = new RegExp(
-  `((?:${DEBIL}h?)*${FUERTE}(?:h?${DEBIL})*|(?:${DEBIL}|${DEBIL_TONICA})+)`,
+  `((?:${DEBIL}h?)*${FUERTE}(?:h?${DEBIL})?|(?:${DEBIL}|${DEBIL_TONICA})+)`,
 );
 const CON_TILDE: Record<string, string> = {
   a: 'á',

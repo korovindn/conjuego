@@ -1,8 +1,14 @@
 {
+  "acensuar": {
+    "hiato": true
+  },
   "acentuar": {
     "hiato": true
   },
   "actuar": {
+    "hiato": true
+  },
+  "adiar": {
     "hiato": true
   },
   "ahilar": {
@@ -17,13 +23,13 @@
   "ahuchar": {
     "hiato": true
   },
-  "ahusar": {
-    "hiato": true
-  },
   "airar": {
     "hiato": true
   },
   "aislar": {
+    "hiato": true
+  },
+  "almadiar": {
     "hiato": true
   },
   "amnistiar": {
@@ -33,6 +39,9 @@
     "hiato": true
   },
   "ansiar": {
+    "hiato": true
+  },
+  "anticuar": {
     "hiato": true
   },
   "arcaizar": {
@@ -53,11 +62,20 @@
   "averiar": {
     "hiato": true
   },
+  "baraustar": {
+    "hiato": true
+  },
+  "cabrahigar": {
+    "hiato": true
+  },
   "cariar": {
     "hiato": true
   },
   "ceptuar": {
     "abstracto": true,
+    "hiato": true
+  },
+  "chiar": {
     "hiato": true
   },
   "chirriar": {
@@ -69,6 +87,9 @@
   "consensuar": {
     "hiato": true
   },
+  "contextuar": {
+    "hiato": true
+  },
   "continuar": {
     "hiato": true
   },
@@ -76,6 +97,12 @@
     "hiato": true
   },
   "criar": {
+    "hiato": true
+  },
+  "cuantiar": {
+    "hiato": true
+  },
+  "demasiar": {
     "hiato": true
   },
   "descafeinar": {
@@ -99,7 +126,7 @@
   "enlejiar": {
     "hiato": true
   },
-  "enraizar": {
+  "enriar": {
     "hiato": true
   },
   "esquiar": {
@@ -122,6 +149,9 @@
   },
   "friar": {
     "abstracto": true,
+    "hiato": true
+  },
+  "ganzuar": {
     "hiato": true
   },
   "garuar": {
@@ -163,6 +193,10 @@
     "abstracto": true,
     "hiato": true
   },
+  "husar": {
+    "abstracto": true,
+    "hiato": true
+  },
   "individuar": {
     "hiato": true
   },
@@ -184,13 +218,23 @@
   "menstruar": {
     "hiato": true
   },
+  "miar": {
+    "hiato": true
+  },
   "perpetuar": {
     "hiato": true
   },
   "piar": {
     "hiato": true
   },
+  "puar": {
+    "hiato": true
+  },
   "puntuar": {
+    "hiato": true
+  },
+  "raizar": {
+    "abstracto": true,
     "hiato": true
   },
   "redituar": {
@@ -205,13 +249,22 @@
   "rehundir": {
     "hiato": true
   },
-  "rehusar": {
+  "rehurtar": {
     "hiato": true
   },
   "reunir": {
     "hiato": true
   },
   "reír": {
+    "hiato": true
+  },
+  "reuntar": {
+    "hiato": true
+  },
+  "ruar": {
+    "hiato": true
+  },
+  "sainar": {
     "hiato": true
   },
   "sexuar": {
@@ -230,7 +283,13 @@
     "abstracto": true,
     "hiato": true
   },
+  "traillar": {
+    "hiato": true
+  },
   "triar": {
+    "hiato": true
+  },
+  "tumultuar": {
     "hiato": true
   },
   "usufructuar": {
@@ -244,6 +303,9 @@
   },
   "viar": {
     "abstracto": true,
+    "hiato": true
+  },
+  "vigiar": {
     "hiato": true
   },
   "zurriar": {

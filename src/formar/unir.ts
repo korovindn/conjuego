@@ -11,7 +11,7 @@ const ANTE_E: Cambio[] = [
 const ANTE_A_O: Cambio[] = [
   [/qu$/, 'c'],
   [/gu$/, 'g'],
-  [/c$/, 'z'],
+  [/(?<!s)c$/, 'z'],
   [/g$/, 'j'],
 ];
 const ZC: Cambio = [/(?<=[aeiou])c$/, 'zc'];

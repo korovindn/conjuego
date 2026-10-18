@@ -14,6 +14,8 @@ describe('nucleos', () => {
     ['averigüé', ['a', 'e', 'i', 'üé']],
     ['prohibir', ['ohi', 'i']],
     ['prohíbo', ['o', 'í', 'o']],
+    ['rehuid', ['ehu', 'i']],
+    ['rehuíos', ['ehu', 'í', 'o']],
     ['estoy', ['e', 'o']],
   ])('%s → %j', (palabra, esperado) => {
     expect(nucleos(palabra)).toEqual(esperado);

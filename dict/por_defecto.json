@@ -1006,12 +1006,18 @@
     },
     "hijos": ["desenvolver", "desvolver", "devolver", "envolver", "revolver"]
   },
+  "acensuar": {
+    "hiato": true
+  },
   "acentuar": {
     "hiato": true
   },
   "actuar": {
     "hiato": true,
     "hijos": ["coactuar", "interactuar", "sobreactuar", "subactuar"]
+  },
+  "adiar": {
+    "hiato": true
   },
   "ahilar": {
     "hiato": true
@@ -1020,21 +1026,21 @@
     "hiato": true
   },
   "ahitar": {
-    "hiato": true
+    "hiato": true,
+    "hijos": ["desahitar"]
   },
   "ahuchar": {
     "hiato": true
   },
-  "ahusar": {
-    "hiato": true
-  },
   "airar": {
-    "hiato": true,
-    "hijos": ["desairar"]
+    "hiato": true
   },
   "aislar": {
     "hiato": true,
-    "hijos": ["autoaislar"]
+    "hijos": ["autoaislar", "desaislar"]
+  },
+  "almadiar": {
+    "hiato": true
   },
   "amnistiar": {
     "hiato": true
@@ -1043,6 +1049,9 @@
     "hiato": true
   },
   "ansiar": {
+    "hiato": true
+  },
+  "anticuar": {
     "hiato": true
   },
   "arcaizar": {
@@ -1065,6 +1074,13 @@
   "averiar": {
     "hiato": true
   },
+  "baraustar": {
+    "hiato": true
+  },
+  "cabrahigar": {
+    "hiato": true,
+    "hijos": ["encabrahigar"]
+  },
   "cariar": {
     "hiato": true
   },
@@ -1072,6 +1088,10 @@
     "abstracto": true,
     "hiato": true,
     "hijos": ["conceptuar", "desconceptuar", "exceptuar", "preceptuar"]
+  },
+  "chiar": {
+    "hiato": true,
+    "hijos": ["amelarchiar", "cuchichiar"]
   },
   "chirriar": {
     "hiato": true
@@ -1083,6 +1103,9 @@
   "consensuar": {
     "hiato": true
   },
+  "contextuar": {
+    "hiato": true
+  },
   "continuar": {
     "hiato": true,
     "hijos": ["descontinuar", "discontinuar"]
@@ -1092,7 +1115,14 @@
   },
   "criar": {
     "hiato": true,
-    "hijos": ["malcriar", "recriar"]
+    "hijos": ["descriar", "entrecriar", "malcriar", "recriar"]
+  },
+  "cuantiar": {
+    "hiato": true,
+    "hijos": ["acuantiar"]
+  },
+  "demasiar": {
+    "hiato": true
   },
   "descafeinar": {
     "hiato": true
@@ -1110,9 +1140,8 @@
   "enlejiar": {
     "hiato": true
   },
-  "enraizar": {
-    "hiato": true,
-    "hijos": ["desenraizar"]
+  "enriar": {
+    "hiato": true
   },
   "esquiar": {
     "hiato": true
@@ -1133,7 +1162,17 @@
   "friar": {
     "abstracto": true,
     "hiato": true,
-    "hijos": ["enfriar", "escalofriar", "resfriar"]
+    "hijos": [
+      "calofriar",
+      "calosfriar",
+      "enfriar",
+      "escalofriar",
+      "refriar",
+      "resfriar"
+    ]
+  },
+  "ganzuar": {
+    "hiato": true
   },
   "garuar": {
     "hiato": true
@@ -1156,16 +1195,20 @@
       "cartografiar",
       "cinematografiar",
       "coreografiar",
+      "cromolitografiar",
       "dactilografiar",
       "ecografiar",
       "escenografiar",
       "esgrafiar",
       "estenografiar",
       "fotografiar",
+      "fotolitografiar",
+      "litofotografiar",
       "litografiar",
       "mecanografiar",
       "mimeografiar",
       "radiografiar",
+      "radiotelegrafiar",
       "refotografiar",
       "serigrafiar",
       "taquigrafiar",
@@ -1203,7 +1246,12 @@
   "humar": {
     "abstracto": true,
     "hiato": true,
-    "hijos": ["ahumar", "sahumar"]
+    "hijos": ["ahumar", "desahumar", "sahumar"]
+  },
+  "husar": {
+    "abstracto": true,
+    "hiato": true,
+    "hijos": ["ahusar", "parahusar", "rehusar"]
   },
   "individuar": {
     "hiato": true
@@ -1227,6 +1275,9 @@
   "menstruar": {
     "hiato": true
   },
+  "miar": {
+    "hiato": true
+  },
   "perpetuar": {
     "hiato": true
   },
@@ -1234,8 +1285,16 @@
     "hiato": true,
     "hijos": ["espiar", "expiar", "jipiar", "pipiar"]
   },
+  "puar": {
+    "hiato": true
+  },
   "puntuar": {
     "hiato": true
+  },
+  "raizar": {
+    "abstracto": true,
+    "hiato": true,
+    "hijos": ["desenraizar", "desraizar", "enraizar"]
   },
   "redituar": {
     "hiato": true
@@ -1249,11 +1308,23 @@
   "rehundir": {
     "hiato": true
   },
-  "rehusar": {
+  "rehurtar": {
     "hiato": true
   },
   "reunir": {
     "hiato": true
+  },
+  "reuntar": {
+    "hiato": true,
+    "hijos": ["entreuntar"]
+  },
+  "ruar": {
+    "hiato": true,
+    "hijos": ["arruar", "desbruar"]
+  },
+  "sainar": {
+    "hiato": true,
+    "hijos": ["desainar"]
   },
   "sexuar": {
     "hiato": true
@@ -1273,9 +1344,17 @@
     "hiato": true,
     "hijos": ["atenuar", "extenuar"]
   },
+  "traillar": {
+    "hiato": true,
+    "hijos": ["atraillar", "desatraillar"]
+  },
   "triar": {
     "hiato": true,
     "hijos": ["estriar"]
+  },
+  "tumultuar": {
+    "hiato": true,
+    "hijos": ["atumultuar"]
   },
   "usufructuar": {
     "hiato": true
@@ -1303,11 +1382,15 @@
       "ataviar",
       "aviar",
       "desataviar",
+      "desaviar",
       "desviar",
       "enviar",
       "extraviar",
       "reenviar"
     ]
+  },
+  "vigiar": {
+    "hiato": true
   },
   "zurriar": {
     "hiato": true
@@ -1536,6 +1619,13 @@
       }
     },
     "hijos": ["reimprimir", "sobreimprimir"]
+  },
+  "inhestar": {
+    "formas": {
+      "no_personal": {
+        "participio_pasado": "inhiesto"
+      }
+    }
   },
   "interdecir": {
     "formas": {
@@ -1884,6 +1974,13 @@
     "formas": {
       "no_personal": {
         "participio_pasado": "reescrito"
+      }
+    }
+  },
+  "repudrir": {
+    "formas": {
+      "no_personal": {
+        "participio_pasado": "repodrido"
       }
     }
   },

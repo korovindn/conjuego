@@ -7,9 +7,9 @@ export {
   Polaridad,
   Tabla,
   Tratamiento,
+  Tiempo,
   TiempoCompuesto,
   FormaNoPersonalCompuesta,
-  Tiempo,
   Celda,
   SubjuntivoImperfectoVariant,
 } from './types';

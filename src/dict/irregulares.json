@@ -268,6 +268,13 @@
       }
     }
   },
+  "inhestar": {
+    "formas": {
+      "no_personal": {
+        "participio_pasado": "inhiesto"
+      }
+    }
+  },
   "interdecir": {
     "formas": {
       "imperativo": {
@@ -616,6 +623,13 @@
     "formas": {
       "no_personal": {
         "participio_pasado": "reescrito"
+      }
+    }
+  },
+  "repudrir": {
+    "formas": {
+      "no_personal": {
+        "participio_pasado": "repodrido"
       }
     }
   },

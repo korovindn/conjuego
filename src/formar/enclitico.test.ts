@@ -20,6 +20,8 @@ describe('agregarEnclitico', () => {
     ['ved', 'os', 'veos'],
     ['dad', 'os', 'daos'],
     ['oíd', 'os', 'oíos'],
+    ['huid', 'os', 'huíos'],
+    ['rehuid', 'os', 'rehuíos'],
     ['lavad', 'nos', 'lavadnos'],
     ['lavemos', 'lo', 'lavémoslo'],
   ])('%s + %s → %s', (forma, enclitico, esperado) => {
