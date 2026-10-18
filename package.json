@@ -1,9 +1,9 @@
 {
   "name": "conjuego",
   "version": "1.0.0",
-  "description": "",
+  "description": "Spanish verb conjugator. Tiny, typed, rule-based.",
   "license": "ISC",
-  "author": "",
+  "author": "Dmitry Korovin <korovindn@proton.me>",
   "type": "commonjs",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
