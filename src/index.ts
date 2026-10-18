@@ -12,6 +12,4 @@ export {
 } from './types';
 export type { Diccionario, Tabla, Tratamiento } from './types';
 export { conjuego, configurar } from './conjuego';
-export {
-  principal,
-} from './helpers';
+export { principal } from './helpers';

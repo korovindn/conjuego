@@ -1,4 +1,4 @@
-import { Forma } from "../types";
+import { Forma } from '../types';
 
 export const principal = (forma: Forma) => {
   if (typeof forma === 'string') {

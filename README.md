@@ -2,6 +2,8 @@
 
 Spanish verb conjugator. Tiny, typed, rule-based.
 
+**[Try the demo →](https://conjuego.com)**
+
 - **Any verb** — rules plus a small dictionary of irregulars, so neologisms work too (`googlear`, `tuitear`).
 - **Complete** — every simple and compound tense, both imperfect subjunctive forms (-ra/-se), future subjunctive, affirmative and negative imperative, voseo, pronominal verbs (`lavarse` → `lávate`, `lavémonos`).
 - **Accurate** — matches conjugate-esp on 99.8% of its 14,456 RAE verbs. Most remaining differences are errors on their side.

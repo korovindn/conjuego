@@ -4,6 +4,14 @@
   "description": "Spanish verb conjugator. Tiny, typed, rule-based.",
   "license": "ISC",
   "author": "Dmitry Korovin <korovindn@proton.me>",
+  "repository": "https://github.com/korovindn/conjuego",
+  "homepage": "https://conjuego.com",
+  "bugs": "https://github.com/korovindn/conjuego/issues",
+  "keywords": [
+    "spanish",
+    "conjugation",
+    "verbs"
+  ],
   "type": "commonjs",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
@@ -31,7 +39,8 @@
     "test:watch": "vp test",
     "test:coverage": "vp test run --coverage",
     "format": "vp fmt",
-    "format:check": "vp fmt --check"
+    "format:check": "vp fmt --check",
+    "prepublishOnly": "npm run check && npm test && npm run build"
   },
   "devDependencies": {
     "@types/node": "^26.6.5",
