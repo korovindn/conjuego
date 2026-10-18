@@ -4,7 +4,7 @@ Spanish verb conjugator. Tiny, typed, rule-based.
 
 - **Any verb** — rules plus a small dictionary of irregulars, so neologisms work too (`googlear`, `tuitear`).
 - **Complete** — every simple and compound tense, both imperfect subjunctive forms (-ra/-se), future subjunctive, affirmative and negative imperative, voseo, pronominal verbs (`lavarse` → `lávate`, `lavémonos`).
-- **Accurate** — matches [conjugate-esp](https://www.npmjs.com/package/@jirimracek/conjugate-esp) on 99.8% of its 14,456 RAE verbs. Most remaining differences are errors on their side.
+- **Accurate** — matches conjugate-esp on 99.8% of its 14,456 RAE verbs. Most remaining differences are errors on their side.
 - **Small** — ~4 KB gzip engine + ~5 KB dictionary (conjugate-esp: ~66 KB).
 - ESM + CJS, TypeScript types, no dependencies.
 
@@ -26,7 +26,16 @@ tabla.no_personal.gerundio; // 'teniendo'
 conjuego('imprimir').no_personal.participio_pasado; // ['impreso', 'imprimido']
 ```
 
-A cell is a string, or an array `[main, ...variants]` when several forms are correct.
+A cell is a string, or an array `[main, ...variants]` when several forms are correct. `principal()` always gives the main form as a string:
+
+```ts
+import { conjuego, principal } from 'conjuego/por-defecto';
+
+const tabla = conjuego('condecir');
+
+tabla.indicativo.futuro.primera_singular; // ['condeciré', 'condiré']
+principal(tabla.indicativo.futuro.primera_singular); // 'condeciré'
+```
 
 To keep the dictionary in dynamic chunk or out of your bundle, import the bare engine and configure the dictionary:
 
