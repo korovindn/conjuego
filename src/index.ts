@@ -7,6 +7,8 @@ export {
   Polaridad,
   Tabla,
   Tratamiento,
+  TiempoCompuesto,
+  FormaNoPersonalCompuesta,
   Tiempo,
   Celda,
   SubjuntivoImperfectoVariant,

@@ -11,7 +11,7 @@ import {
   Paradigma,
   ParadigmaImperativo,
   Polaridad,
-  Tabla,
+  TablaInterna,
   Tiempo,
 } from '../types';
 
@@ -48,7 +48,7 @@ export const imperativo = (
   indicativoPresente: Paradigma<Forma>,
   subjuntivoPresente: Paradigma<Forma>,
   ajustes: Ajustes = {},
-): Tabla<Forma>[Modo.IMPERATIVO] => {
+): TablaInterna<Forma>[Modo.IMPERATIVO] => {
   const negativo = negativa(subjuntivoPresente);
 
   return {
@@ -96,9 +96,9 @@ export const completarImperativo = (formas: Formas): Formas => {
 };
 
 export const mapear = <F, G>(
-  tabla: Tabla<F>[Modo.IMPERATIVO],
+  tabla: TablaInterna<F>[Modo.IMPERATIVO],
   mapeador: (forma: F, polaridad: Polaridad, celda: CeldaImperativo) => G,
-): Tabla<G>[Modo.IMPERATIVO] => {
+): TablaInterna<G>[Modo.IMPERATIVO] => {
   const mapearPolaridad = (polaridad: Polaridad) =>
     mapearParadigmaImperativo(tabla[polaridad], (forma, celda) =>
       mapeador(forma, polaridad, celda),

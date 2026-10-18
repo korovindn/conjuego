@@ -72,10 +72,28 @@ export enum Tiempo {
   CONDICIONAL = 'condicional',
 }
 
+export enum TiempoCompuesto {
+  /** haber en presente */
+  PERFECTO = 'perfecto',
+  /** haber en imperfecto */
+  PLUSCUAMPERFECTO = 'pluscuamperfecto',
+  /** haber en pretérito */
+  ANTERIOR = 'anterior',
+  /** haber en futuro */
+  FUTURO_PERFECTO = 'futuro_perfecto',
+  /** haber en condicional */
+  CONDICIONAL_PERFECTO = 'condicional_perfecto',
+}
+
 export enum FormaNoPersonal {
   INFINITIVO = 'infinitivo',
   GERUNDIO = 'gerundio',
   PARTICIPIO_PASADO = 'participio_pasado',
+}
+
+export enum FormaNoPersonalCompuesta {
+  INFINITIVO_COMPUESTO = 'infinitivo_compuesto',
+  GERUNDIO_COMPUESTO = 'gerundio_compuesto',
 }
 
 export enum Polaridad {

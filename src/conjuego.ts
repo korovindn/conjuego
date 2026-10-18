@@ -11,6 +11,7 @@ import {
   Diccionario,
   Formas,
   Tabla,
+  TablaInterna,
   Modo,
   Tiempo,
   FORMA_NO_PERSONAL,
@@ -38,20 +39,35 @@ import {
   mapear as mapearNoPersonal,
 } from './no-personal';
 import { prefijar, pronominalizar, pronominalizarNoPersonal } from './formar';
+import { enriquecer } from './compuesto';
 
 let d:
-  | { diccionario: Diccionario; padres: ReadonlyMap<string, string> }
+  | {
+      diccionario: Diccionario;
+      padres: ReadonlyMap<string, string>;
+      haber: { simple: TablaInterna; pronominal: TablaInterna };
+    }
   | undefined;
 
 export const configurar = (diccionario: Diccionario) => {
-  d = { diccionario, padres: indexarPadres(diccionario) };
+  const padres = indexarPadres(diccionario);
+  const haber = conjugar('haber', diccionario, padres);
+
+  d = {
+    diccionario,
+    padres,
+    haber: {
+      simple: haber,
+      pronominal: mapearTabla(haber, pronominalizar, pronominalizarNoPersonal),
+    },
+  };
 };
 
 const mapearTabla = (
-  tabla: Tabla,
+  tabla: TablaInterna,
   personal: (forma: string, celda: Celda, polaridad?: Polaridad) => string,
   noPersonal: (forma: string, tipo: FormaNoPersonal) => string,
-): Tabla => ({
+): TablaInterna => ({
   [Modo.INDICATIVO]: mapearIndicativo(
     tabla[Modo.INDICATIVO],
     (casilla, _tiempo, celda) =>
@@ -76,7 +92,10 @@ const mapearTabla = (
 const elegir = (forma: Casilla | undefined, casilla: Casilla): Casilla =>
   forma === undefined ? casilla : forma;
 
-export const aplicarFormas = (tabla: Tabla, formas: Formas): Tabla => ({
+export const aplicarFormas = (
+  tabla: TablaInterna,
+  formas: Formas,
+): TablaInterna => ({
   [Modo.INDICATIVO]: mapearIndicativo(
     tabla[Modo.INDICATIVO],
     (casilla, tiempo, celda) =>
@@ -106,7 +125,7 @@ export const aplicarFormas = (tabla: Tabla, formas: Formas): Tabla => ({
   ),
 });
 
-const generar = (verbo: string, ajustes: Ajustes): Tabla => {
+const generar = (verbo: string, ajustes: Ajustes): TablaInterna => {
   const [raiz, clase] = parsearVerbo(verbo);
   const indicativo = crearIndicativo(raiz, clase, ajustes);
   const subjuntivo = crearSubjuntivo(raiz, clase, ajustes);
@@ -138,7 +157,7 @@ const heredar = (
   padre: string,
   diccionario: Diccionario,
   padres: ReadonlyMap<string, string>,
-): Tabla => {
+): TablaInterna => {
   const prefijo = verbo.slice(0, -padre.length);
   const conPrefijo = (forma: string) => prefijar(prefijo, forma);
 
@@ -153,7 +172,7 @@ const conjugar = (
   verbo: string,
   diccionario: Diccionario,
   padres: ReadonlyMap<string, string>,
-): Tabla => {
+): TablaInterna => {
   const padre = padres.get(verbo);
   const entrada = diccionario.get(verbo) ?? {};
   const tabla =
@@ -180,6 +199,9 @@ export const conjuego = (verbo: string): Tabla => {
   );
 
   return pronominal
-    ? mapearTabla(tabla, pronominalizar, pronominalizarNoPersonal)
-    : tabla;
+    ? enriquecer(
+        mapearTabla(tabla, pronominalizar, pronominalizarNoPersonal),
+        d.haber.pronominal,
+      )
+    : enriquecer(tabla, d.haber.simple);
 };

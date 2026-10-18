@@ -1,9 +1,11 @@
 import {
   FORMA_NO_PERSONAL,
   FormaNoPersonal,
+  FormaNoPersonalCompuesta,
   Modo,
   Polaridad,
   Tiempo,
+  TiempoCompuesto,
 } from './lengua';
 
 export enum Celda {
@@ -38,7 +40,7 @@ export type Casilla = Forma | null;
 export type Paradigma<F = Casilla> = Record<Celda, F>;
 export type ParadigmaImperativo<F = Casilla> = Record<CeldaImperativo, F>;
 
-export interface Tabla<F = Casilla> {
+export interface TablaInterna<F = Casilla> {
   [Modo.INDICATIVO]: Record<Tiempo, Paradigma<F>>;
   [Modo.SUBJUNTIVO]: {
     [Tiempo.PRESENTE]: Paradigma<F>;
@@ -47,4 +49,20 @@ export interface Tabla<F = Casilla> {
   };
   [Modo.IMPERATIVO]: Record<Polaridad, ParadigmaImperativo<F>>;
   [FORMA_NO_PERSONAL]: Record<FormaNoPersonal, F>;
+}
+
+export interface Tabla<F = Casilla> {
+  [Modo.INDICATIVO]: TablaInterna<F>[Modo.INDICATIVO] &
+    Record<TiempoCompuesto, Paradigma<F>>;
+  [Modo.SUBJUNTIVO]: TablaInterna<F>[Modo.SUBJUNTIVO] & {
+    [TiempoCompuesto.PERFECTO]: Paradigma<F>;
+    [TiempoCompuesto.PLUSCUAMPERFECTO]: Record<
+      SubjuntivoImperfectoVariant,
+      Paradigma<F>
+    >;
+    [TiempoCompuesto.FUTURO_PERFECTO]: Paradigma<F>;
+  };
+  [Modo.IMPERATIVO]: TablaInterna<F>[Modo.IMPERATIVO];
+  [FORMA_NO_PERSONAL]: TablaInterna<F>[typeof FORMA_NO_PERSONAL] &
+    Record<FormaNoPersonalCompuesta, F>;
 }

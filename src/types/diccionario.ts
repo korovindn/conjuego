@@ -1,5 +1,5 @@
 import { Alternancia, FORMA_NO_PERSONAL, FormaNoPersonal } from './lengua';
-import { Casilla, Forma, Tabla } from './tabla';
+import { Casilla, Forma, TablaInterna } from './tabla';
 
 export interface Raices {
   /** primera persona del presente y todo el presente de subjuntivo */
@@ -15,9 +15,9 @@ type Parcial<T> = {
 };
 
 export type Formas = Parcial<
-  Omit<Tabla, typeof FORMA_NO_PERSONAL> & {
+  Omit<TablaInterna, typeof FORMA_NO_PERSONAL> & {
     [FORMA_NO_PERSONAL]: Omit<
-      Tabla[typeof FORMA_NO_PERSONAL],
+      TablaInterna[typeof FORMA_NO_PERSONAL],
       FormaNoPersonal.INFINITIVO
     >;
   }

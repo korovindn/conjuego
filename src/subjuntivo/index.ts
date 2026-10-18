@@ -6,7 +6,7 @@ import {
   Forma,
   Modo,
   SubjuntivoImperfectoVariant,
-  Tabla,
+  TablaInterna,
   Tiempo,
 } from '../types';
 import { futuro } from './futuro';
@@ -17,7 +17,7 @@ export const subjuntivo = (
   raiz: string,
   clase: Clase,
   ajustes: Ajustes = {},
-): Tabla<Forma>[Modo.SUBJUNTIVO] => ({
+): TablaInterna<Forma>[Modo.SUBJUNTIVO] => ({
   [Tiempo.PRESENTE]: presente(raiz, clase, ajustes),
   [Tiempo.IMPERFECTO]: {
     [SubjuntivoImperfectoVariant.RA]: imperfecto(
@@ -39,14 +39,14 @@ export const subjuntivo = (
 export { completarFuturo } from './futuro';
 
 export const mapear = <F, G>(
-  tabla: Tabla<F>[Modo.SUBJUNTIVO],
+  tabla: TablaInterna<F>[Modo.SUBJUNTIVO],
   mapeador: (
     forma: F,
     tiempo: Tiempo.PRESENTE | Tiempo.IMPERFECTO | Tiempo.FUTURO,
     celda: Celda,
     variant?: SubjuntivoImperfectoVariant,
   ) => G,
-): Tabla<G>[Modo.SUBJUNTIVO] => {
+): TablaInterna<G>[Modo.SUBJUNTIVO] => {
   return {
     [Tiempo.PRESENTE]: mapearParadigma(tabla[Tiempo.PRESENTE], (forma, celda) =>
       mapeador(forma, Tiempo.PRESENTE, celda),

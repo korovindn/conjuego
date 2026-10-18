@@ -8,10 +8,12 @@ import {
   Celda,
   FORMA_NO_PERSONAL,
   FormaNoPersonal,
+  FormaNoPersonalCompuesta,
   Modo,
   Polaridad,
   SubjuntivoImperfectoVariant,
   Tiempo,
+  TiempoCompuesto,
 } from './types';
 
 describe('conjuego', () => {
@@ -295,6 +297,8 @@ describe('conjuego', () => {
         [FormaNoPersonal.INFINITIVO]: 'pensar',
         [FormaNoPersonal.GERUNDIO]: 'pensando',
         [FormaNoPersonal.PARTICIPIO_PASADO]: 'pensado',
+        [FormaNoPersonalCompuesta.INFINITIVO_COMPUESTO]: 'haber pensado',
+        [FormaNoPersonalCompuesta.GERUNDIO_COMPUESTO]: 'habiendo pensado',
       });
     });
 
@@ -356,6 +360,8 @@ describe('conjuego', () => {
         [FormaNoPersonal.INFINITIVO]: 'sentir',
         [FormaNoPersonal.GERUNDIO]: 'sintiendo',
         [FormaNoPersonal.PARTICIPIO_PASADO]: 'sentido',
+        [FormaNoPersonalCompuesta.INFINITIVO_COMPUESTO]: 'haber sentido',
+        [FormaNoPersonalCompuesta.GERUNDIO_COMPUESTO]: 'habiendo sentido',
       });
     });
 
@@ -672,6 +678,8 @@ describe('conjuego', () => {
         [FormaNoPersonal.INFINITIVO]: 'enviar',
         [FormaNoPersonal.GERUNDIO]: 'enviando',
         [FormaNoPersonal.PARTICIPIO_PASADO]: 'enviado',
+        [FormaNoPersonalCompuesta.INFINITIVO_COMPUESTO]: 'haber enviado',
+        [FormaNoPersonalCompuesta.GERUNDIO_COMPUESTO]: 'habiendo enviado',
       });
     });
 
@@ -957,6 +965,8 @@ describe('conjuego', () => {
         [FormaNoPersonal.INFINITIVO]: 'tener',
         [FormaNoPersonal.GERUNDIO]: 'teniendo',
         [FormaNoPersonal.PARTICIPIO_PASADO]: 'tenido',
+        [FormaNoPersonalCompuesta.INFINITIVO_COMPUESTO]: 'haber tenido',
+        [FormaNoPersonalCompuesta.GERUNDIO_COMPUESTO]: 'habiendo tenido',
       });
     });
 
@@ -1016,6 +1026,8 @@ describe('conjuego', () => {
         [FormaNoPersonal.INFINITIVO]: 'decir',
         [FormaNoPersonal.GERUNDIO]: 'diciendo',
         [FormaNoPersonal.PARTICIPIO_PASADO]: 'dicho',
+        [FormaNoPersonalCompuesta.INFINITIVO_COMPUESTO]: 'haber dicho',
+        [FormaNoPersonalCompuesta.GERUNDIO_COMPUESTO]: 'habiendo dicho',
       });
     });
 
@@ -1200,6 +1212,102 @@ describe('conjuego', () => {
         esperado,
       );
     });
+
+    describe('compuestos', () => {
+      beforeEach(() => {
+        configurar(diccionario);
+      });
+
+      it('hablar en toda la tabla', () => {
+        const tabla = conjuego('hablar');
+
+        expect(tabla[Modo.INDICATIVO][TiempoCompuesto.PERFECTO]).toEqual({
+          [Celda.PRIMERA_SINGULAR]: 'he hablado',
+          [Celda.SEGUNDA_SINGULAR]: 'has hablado',
+          [Celda.SEGUNDA_SINGULAR_VOSEO]: 'has hablado',
+          [Celda.TERCERA_SINGULAR]: 'ha hablado',
+          [Celda.PRIMERA_PLURAL]: 'hemos hablado',
+          [Celda.SEGUNDA_PLURAL]: 'habéis hablado',
+          [Celda.TERCERA_PLURAL]: 'han hablado',
+        });
+        expect(
+          tabla[Modo.INDICATIVO][TiempoCompuesto.PLUSCUAMPERFECTO][
+            Celda.PRIMERA_PLURAL
+          ],
+        ).toBe('habíamos hablado');
+        expect(
+          tabla[Modo.INDICATIVO][TiempoCompuesto.ANTERIOR][
+            Celda.TERCERA_SINGULAR
+          ],
+        ).toBe('hubo hablado');
+        expect(
+          tabla[Modo.INDICATIVO][TiempoCompuesto.FUTURO_PERFECTO][
+            Celda.SEGUNDA_PLURAL
+          ],
+        ).toBe('habréis hablado');
+        expect(
+          tabla[Modo.INDICATIVO][TiempoCompuesto.CONDICIONAL_PERFECTO][
+            Celda.PRIMERA_SINGULAR
+          ],
+        ).toBe('habría hablado');
+        expect(
+          tabla[Modo.SUBJUNTIVO][TiempoCompuesto.PERFECTO][
+            Celda.TERCERA_PLURAL
+          ],
+        ).toBe('hayan hablado');
+        expect(
+          tabla[Modo.SUBJUNTIVO][TiempoCompuesto.PLUSCUAMPERFECTO][
+            SubjuntivoImperfectoVariant.RA
+          ][Celda.PRIMERA_SINGULAR],
+        ).toBe('hubiera hablado');
+        expect(
+          tabla[Modo.SUBJUNTIVO][TiempoCompuesto.PLUSCUAMPERFECTO][
+            SubjuntivoImperfectoVariant.SE
+          ][Celda.PRIMERA_PLURAL],
+        ).toBe('hubiésemos hablado');
+        expect(
+          tabla[Modo.SUBJUNTIVO][TiempoCompuesto.FUTURO_PERFECTO][
+            Celda.SEGUNDA_SINGULAR
+          ],
+        ).toBe('hubieres hablado');
+        expect(tabla[FORMA_NO_PERSONAL]).toMatchObject({
+          [FormaNoPersonalCompuesta.INFINITIVO_COMPUESTO]: 'haber hablado',
+          [FormaNoPersonalCompuesta.GERUNDIO_COMPUESTO]: 'habiendo hablado',
+        });
+      });
+
+      it.each([
+        ['hacer', 'he hecho'],
+        ['rehacer', 'he rehecho'],
+        ['freír', ['he frito', 'he freído']],
+        ['haber', 'he habido'],
+      ] as const)('participio de %s', (verbo, esperado) => {
+        expect(
+          conjuego(verbo)[Modo.INDICATIVO][TiempoCompuesto.PERFECTO][
+            Celda.PRIMERA_SINGULAR
+          ],
+        ).toEqual(esperado);
+      });
+
+      it('pronominal', () => {
+        const tabla = conjuego('lavarse');
+
+        expect(
+          tabla[Modo.INDICATIVO][TiempoCompuesto.PERFECTO][
+            Celda.PRIMERA_SINGULAR
+          ],
+        ).toBe('me he lavado');
+        expect(
+          tabla[Modo.SUBJUNTIVO][TiempoCompuesto.PLUSCUAMPERFECTO][
+            SubjuntivoImperfectoVariant.SE
+          ][Celda.PRIMERA_PLURAL],
+        ).toBe('nos hubiésemos lavado');
+        expect(tabla[FORMA_NO_PERSONAL]).toMatchObject({
+          [FormaNoPersonalCompuesta.INFINITIVO_COMPUESTO]: 'haberse lavado',
+          [FormaNoPersonalCompuesta.GERUNDIO_COMPUESTO]: 'habiéndose lavado',
+        });
+      });
+    });
   });
 });
 
@@ -1222,7 +1330,7 @@ describe('aplicarFormas', () => {
     expect(
       resultado[FORMA_NO_PERSONAL][FormaNoPersonal.PARTICIPIO_PASADO],
     ).toBeNull();
-    expect(resultado[Modo.SUBJUNTIVO]).toEqual(tabla[Modo.SUBJUNTIVO]);
+    expect(tabla[Modo.SUBJUNTIVO]).toMatchObject(resultado[Modo.SUBJUNTIVO]);
   });
 
   it('reemplaza el subjuntivo por tiempo y variante', () => {

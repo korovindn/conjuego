@@ -4,7 +4,7 @@ import {
   Clase,
   FORMA_NO_PERSONAL,
   FormaNoPersonal,
-  Tabla,
+  TablaInterna,
 } from '../types';
 
 export const infinitivo = (raiz: string, clase: Clase, ajustes: Ajustes = {}) =>
@@ -20,9 +20,9 @@ export const participioPasado = (
 ) => formarPorClase(raiz, clase, ajustes)('ádo', 'ído', 'ído');
 
 export const mapear = <F, G>(
-  tabla: Tabla<F>[typeof FORMA_NO_PERSONAL],
+  tabla: TablaInterna<F>[typeof FORMA_NO_PERSONAL],
   mapeador: (forma: F, tipo: FormaNoPersonal) => G,
-): Tabla<G>[typeof FORMA_NO_PERSONAL] => ({
+): TablaInterna<G>[typeof FORMA_NO_PERSONAL] => ({
   [FormaNoPersonal.INFINITIVO]: mapeador(
     tabla[FormaNoPersonal.INFINITIVO],
     FormaNoPersonal.INFINITIVO,
