@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import { presente as presenteIndicativo } from '../indicativo/presente';
 import { presente as presenteSubjuntivo } from '../subjuntivo/presente';
-import { Celda, Clase, Polaridad } from '../types';
-import { imperativo } from './index';
+import { Celda, Clase, Modo, Polaridad, Tiempo } from '../types';
+import { completarImperativo, imperativo } from './index';
 
 describe('imperativo de verbos regulares', () => {
   it.each([
@@ -84,5 +84,57 @@ describe('imperativo de verbos regulares', () => {
         presenteSubjuntivo(raiz, clase),
       ),
     ).toEqual(esperado);
+  });
+});
+
+describe('completarImperativo', () => {
+  it('extiende el subjuntivo y el indicativo del presente', () => {
+    expect(
+      completarImperativo({
+        [Modo.INDICATIVO]: {
+          [Tiempo.PRESENTE]: { [Celda.SEGUNDA_SINGULAR]: ['oyes', 'oís'] },
+        },
+        [Modo.SUBJUNTIVO]: {
+          [Tiempo.PRESENTE]: {
+            [Celda.PRIMERA_SINGULAR]: 'dé',
+            [Celda.SEGUNDA_SINGULAR]: 'des',
+            [Celda.SEGUNDA_PLURAL]: 'deis',
+            [Celda.TERCERA_SINGULAR]: 'dé',
+          },
+        },
+      })[Modo.IMPERATIVO],
+    ).toEqual({
+      [Polaridad.AFIRMATIVA]: {
+        [Celda.SEGUNDA_SINGULAR]: ['oye', 'oí'],
+        [Celda.TERCERA_SINGULAR]: 'dé',
+      },
+      [Polaridad.NEGATIVA]: {
+        [Celda.SEGUNDA_SINGULAR]: 'des',
+        [Celda.SEGUNDA_PLURAL]: 'deis',
+        [Celda.TERCERA_SINGULAR]: 'dé',
+      },
+    });
+  });
+
+  it('el imperativo explícito tiene prioridad', () => {
+    expect(
+      completarImperativo({
+        [Modo.INDICATIVO]: {
+          [Tiempo.PRESENTE]: {
+            [Celda.SEGUNDA_SINGULAR]: 'eres',
+            [Celda.SEGUNDA_SINGULAR_VOSEO]: null,
+          },
+        },
+        [Modo.IMPERATIVO]: {
+          [Polaridad.AFIRMATIVA]: { [Celda.SEGUNDA_SINGULAR]: 'sé' },
+        },
+      })[Modo.IMPERATIVO],
+    ).toEqual({
+      [Polaridad.AFIRMATIVA]: {
+        [Celda.SEGUNDA_SINGULAR]: 'sé',
+        [Celda.SEGUNDA_SINGULAR_VOSEO]: null,
+      },
+      [Polaridad.NEGATIVA]: {},
+    });
   });
 });

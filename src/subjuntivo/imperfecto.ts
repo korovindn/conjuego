@@ -4,6 +4,7 @@ import {
   Ajustes,
   Celda,
   Clase,
+  Forma,
   Paradigma,
   SubjuntivoImperfectoVariant,
 } from '../types';
@@ -13,10 +14,12 @@ export const imperfecto = (
   clase: Clase,
   variant: SubjuntivoImperfectoVariant,
   ajustes: Ajustes = {},
-): Paradigma<string> => {
-  const tema = porClase('á', 'ié', 'ié')(clase);
+): Paradigma<Forma> => {
+  const raizIrregular = ajustes.raices?.preterito;
+  const tema =
+    raizIrregular === undefined ? porClase('á', 'ié', 'ié')(clase) : 'ié';
   const forma = (persona: string) =>
-    formar(raiz, clase, `${tema}${variant}${persona}`, ajustes);
+    formar(raiz, clase, `${tema}${variant}${persona}`, ajustes, raizIrregular);
 
   return {
     [Celda.PRIMERA_SINGULAR]: forma(''),

@@ -1,7 +1,10 @@
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { beforeEach, describe, expect, it } from 'vitest';
-import { configurar, conjuego } from './conjuego';
+import { aplicarFormas, configurar, conjuego } from './conjuego';
 import {
   Alternancia,
+  EntradaVerbo,
   Celda,
   FORMA_NO_PERSONAL,
   FormaNoPersonal,
@@ -773,5 +776,456 @@ describe('conjuego', () => {
         ],
       ).toBe('ríete');
     });
+  });
+
+  describe('irregulares', () => {
+    beforeEach(() => {
+      configurar(
+        new Map<string, EntradaVerbo>([
+          [
+            'tener',
+            {
+              alternancia: Alternancia.E_IE,
+              raices: { presente: 'teng', preterito: 'tuv', futuro: 'tendr' },
+              formas: {
+                [Modo.IMPERATIVO]: {
+                  [Polaridad.AFIRMATIVA]: { [Celda.SEGUNDA_SINGULAR]: 'ten' },
+                },
+              },
+              hijos: ['detener'],
+            },
+          ],
+          [
+            'decir',
+            {
+              alternancia: Alternancia.E_I,
+              raices: { presente: 'dig', preterito: 'dij', futuro: 'dir' },
+              formas: {
+                [Modo.IMPERATIVO]: {
+                  [Polaridad.AFIRMATIVA]: { [Celda.SEGUNDA_SINGULAR]: 'di' },
+                },
+                [FORMA_NO_PERSONAL]: {
+                  [FormaNoPersonal.PARTICIPIO_PASADO]: 'dicho',
+                },
+              },
+              hijos: ['interdecir'],
+            },
+          ],
+          [
+            'interdecir',
+            {
+              formas: {
+                [Modo.IMPERATIVO]: {
+                  [Polaridad.AFIRMATIVA]: {
+                    [Celda.SEGUNDA_SINGULAR]: 'interdice',
+                  },
+                },
+              },
+            },
+          ],
+          [
+            'hacer',
+            {
+              zc: false,
+              raices: { presente: 'hag', preterito: 'hic', futuro: 'har' },
+              formas: {
+                [Modo.INDICATIVO]: {
+                  [Tiempo.PRETERITO]: { [Celda.TERCERA_SINGULAR]: 'hizo' },
+                },
+                [Modo.IMPERATIVO]: {
+                  [Polaridad.AFIRMATIVA]: { [Celda.SEGUNDA_SINGULAR]: 'haz' },
+                },
+                [FORMA_NO_PERSONAL]: {
+                  [FormaNoPersonal.PARTICIPIO_PASADO]: 'hecho',
+                },
+              },
+              hijos: ['deshacer'],
+            },
+          ],
+          [
+            'dar',
+            {
+              formas: {
+                [Modo.INDICATIVO]: {
+                  [Tiempo.PRESENTE]: { [Celda.PRIMERA_SINGULAR]: 'doy' },
+                },
+                [Modo.SUBJUNTIVO]: {
+                  [Tiempo.PRESENTE]: {
+                    [Celda.PRIMERA_SINGULAR]: 'dé',
+                    [Celda.TERCERA_SINGULAR]: 'dé',
+                  },
+                },
+              },
+            },
+          ],
+          [
+            'oír',
+            {
+              raices: { presente: 'oig' },
+              formas: {
+                [Modo.INDICATIVO]: {
+                  [Tiempo.PRESENTE]: {
+                    [Celda.SEGUNDA_SINGULAR]: 'oyes',
+                    [Celda.TERCERA_SINGULAR]: 'oye',
+                    [Celda.TERCERA_PLURAL]: 'oyen',
+                  },
+                },
+              },
+            },
+          ],
+          [
+            'roer',
+            {
+              raices: { presente: ['ro', 'roig', 'roy'] },
+              hijos: ['corroer'],
+            },
+          ],
+          [
+            'soler',
+            {
+              alternancia: Alternancia.O_UE,
+              formas: {
+                [Modo.INDICATIVO]: {
+                  [Tiempo.FUTURO]: { [Celda.PRIMERA_SINGULAR]: null },
+                },
+              },
+            },
+          ],
+        ]),
+      );
+    });
+
+    it('tener en toda la tabla', () => {
+      const tabla = conjuego('tener');
+
+      expect(tabla[Modo.INDICATIVO][Tiempo.PRESENTE]).toEqual({
+        [Celda.PRIMERA_SINGULAR]: 'tengo',
+        [Celda.SEGUNDA_SINGULAR]: 'tienes',
+        [Celda.SEGUNDA_SINGULAR_VOSEO]: 'tenés',
+        [Celda.TERCERA_SINGULAR]: 'tiene',
+        [Celda.PRIMERA_PLURAL]: 'tenemos',
+        [Celda.SEGUNDA_PLURAL]: 'tenéis',
+        [Celda.TERCERA_PLURAL]: 'tienen',
+      });
+      expect(tabla[Modo.INDICATIVO][Tiempo.PRETERITO]).toEqual({
+        [Celda.PRIMERA_SINGULAR]: 'tuve',
+        [Celda.SEGUNDA_SINGULAR]: 'tuviste',
+        [Celda.SEGUNDA_SINGULAR_VOSEO]: 'tuviste',
+        [Celda.TERCERA_SINGULAR]: 'tuvo',
+        [Celda.PRIMERA_PLURAL]: 'tuvimos',
+        [Celda.SEGUNDA_PLURAL]: 'tuvisteis',
+        [Celda.TERCERA_PLURAL]: 'tuvieron',
+      });
+      expect(tabla[Modo.INDICATIVO][Tiempo.FUTURO]).toMatchObject({
+        [Celda.PRIMERA_SINGULAR]: 'tendré',
+        [Celda.PRIMERA_PLURAL]: 'tendremos',
+      });
+      expect(tabla[Modo.INDICATIVO][Tiempo.CONDICIONAL]).toMatchObject({
+        [Celda.PRIMERA_SINGULAR]: 'tendría',
+        [Celda.PRIMERA_PLURAL]: 'tendríamos',
+      });
+      expect(tabla[Modo.INDICATIVO][Tiempo.IMPERFECTO]).toMatchObject({
+        [Celda.PRIMERA_SINGULAR]: 'tenía',
+      });
+      expect(tabla[Modo.SUBJUNTIVO][Tiempo.PRESENTE]).toMatchObject({
+        [Celda.PRIMERA_SINGULAR]: 'tenga',
+        [Celda.SEGUNDA_SINGULAR_VOSEO]: 'tengas',
+        [Celda.PRIMERA_PLURAL]: 'tengamos',
+      });
+      expect(
+        tabla[Modo.SUBJUNTIVO][Tiempo.IMPERFECTO][
+          SubjuntivoImperfectoVariant.RA
+        ],
+      ).toMatchObject({
+        [Celda.PRIMERA_SINGULAR]: 'tuviera',
+        [Celda.PRIMERA_PLURAL]: 'tuviéramos',
+      });
+      expect(
+        tabla[Modo.SUBJUNTIVO][Tiempo.IMPERFECTO][
+          SubjuntivoImperfectoVariant.SE
+        ][Celda.TERCERA_PLURAL],
+      ).toBe('tuviesen');
+      expect(tabla[Modo.IMPERATIVO][Polaridad.AFIRMATIVA]).toEqual({
+        [Celda.SEGUNDA_SINGULAR]: 'ten',
+        [Celda.SEGUNDA_SINGULAR_VOSEO]: 'tené',
+        [Celda.TERCERA_SINGULAR]: 'tenga',
+        [Celda.PRIMERA_PLURAL]: 'tengamos',
+        [Celda.SEGUNDA_PLURAL]: 'tened',
+        [Celda.TERCERA_PLURAL]: 'tengan',
+      });
+      expect(tabla[FORMA_NO_PERSONAL]).toEqual({
+        [FormaNoPersonal.INFINITIVO]: 'tener',
+        [FormaNoPersonal.GERUNDIO]: 'teniendo',
+        [FormaNoPersonal.PARTICIPIO_PASADO]: 'tenido',
+      });
+    });
+
+    it('detener hereda raíces y formas', () => {
+      const tabla = conjuego('detener');
+
+      expect(
+        tabla[Modo.INDICATIVO][Tiempo.PRESENTE][Celda.PRIMERA_SINGULAR],
+      ).toBe('detengo');
+      expect(
+        tabla[Modo.INDICATIVO][Tiempo.PRETERITO][Celda.TERCERA_SINGULAR],
+      ).toBe('detuvo');
+      expect(
+        tabla[Modo.INDICATIVO][Tiempo.FUTURO][Celda.PRIMERA_SINGULAR],
+      ).toBe('detendré');
+      expect(
+        tabla[Modo.IMPERATIVO][Polaridad.AFIRMATIVA][Celda.SEGUNDA_SINGULAR],
+      ).toBe('detén');
+    });
+
+    it('detenerse', () => {
+      const tabla = conjuego('detenerse');
+
+      expect(
+        tabla[Modo.INDICATIVO][Tiempo.PRETERITO][Celda.PRIMERA_SINGULAR],
+      ).toBe('me detuve');
+      expect(
+        tabla[Modo.IMPERATIVO][Polaridad.AFIRMATIVA][Celda.SEGUNDA_SINGULAR],
+      ).toBe('detente');
+    });
+
+    it('decir: pretérito fuerte en j', () => {
+      const tabla = conjuego('decir');
+
+      expect(tabla[Modo.INDICATIVO][Tiempo.PRESENTE]).toMatchObject({
+        [Celda.PRIMERA_SINGULAR]: 'digo',
+        [Celda.SEGUNDA_SINGULAR]: 'dices',
+        [Celda.PRIMERA_PLURAL]: 'decimos',
+      });
+      expect(tabla[Modo.INDICATIVO][Tiempo.PRETERITO]).toMatchObject({
+        [Celda.PRIMERA_SINGULAR]: 'dije',
+        [Celda.TERCERA_SINGULAR]: 'dijo',
+        [Celda.TERCERA_PLURAL]: 'dijeron',
+      });
+      expect(
+        tabla[Modo.SUBJUNTIVO][Tiempo.IMPERFECTO][
+          SubjuntivoImperfectoVariant.SE
+        ],
+      ).toMatchObject({
+        [Celda.PRIMERA_SINGULAR]: 'dijese',
+        [Celda.PRIMERA_PLURAL]: 'dijésemos',
+      });
+      expect(
+        tabla[Modo.INDICATIVO][Tiempo.FUTURO][Celda.PRIMERA_SINGULAR],
+      ).toBe('diré');
+      expect(tabla[FORMA_NO_PERSONAL]).toEqual({
+        [FormaNoPersonal.INFINITIVO]: 'decir',
+        [FormaNoPersonal.GERUNDIO]: 'diciendo',
+        [FormaNoPersonal.PARTICIPIO_PASADO]: 'dicho',
+      });
+    });
+
+    it('formas del hijo prevalecen sobre las del padre', () => {
+      const tabla = conjuego('interdecir');
+
+      expect(
+        tabla[Modo.IMPERATIVO][Polaridad.AFIRMATIVA][Celda.SEGUNDA_SINGULAR],
+      ).toBe('interdice');
+      expect(tabla[FORMA_NO_PERSONAL][FormaNoPersonal.PARTICIPIO_PASADO]).toBe(
+        'interdicho',
+      );
+    });
+
+    it.each([
+      ['hacer', 'hago', 'hice', 'hizo', 'haré', 'haz', 'hecho'],
+      [
+        'deshacer',
+        'deshago',
+        'deshice',
+        'deshizo',
+        'desharé',
+        'deshaz',
+        'deshecho',
+      ],
+    ])(
+      '%s',
+      (verbo, presente, preterito, tercera, futuro, imperativo, participio) => {
+        const tabla = conjuego(verbo);
+
+        expect(
+          tabla[Modo.INDICATIVO][Tiempo.PRESENTE][Celda.PRIMERA_SINGULAR],
+        ).toBe(presente);
+        expect(tabla[Modo.INDICATIVO][Tiempo.PRETERITO]).toMatchObject({
+          [Celda.PRIMERA_SINGULAR]: preterito,
+          [Celda.TERCERA_SINGULAR]: tercera,
+        });
+        expect(
+          tabla[Modo.INDICATIVO][Tiempo.FUTURO][Celda.PRIMERA_SINGULAR],
+        ).toBe(futuro);
+        expect(
+          tabla[Modo.IMPERATIVO][Polaridad.AFIRMATIVA][Celda.SEGUNDA_SINGULAR],
+        ).toBe(imperativo);
+        expect(
+          tabla[FORMA_NO_PERSONAL][FormaNoPersonal.PARTICIPIO_PASADO],
+        ).toBe(participio);
+      },
+    );
+
+    it('dar: el subjuntivo se extiende al imperativo', () => {
+      const tabla = conjuego('dar');
+
+      expect(
+        tabla[Modo.INDICATIVO][Tiempo.PRESENTE][Celda.PRIMERA_SINGULAR],
+      ).toBe('doy');
+      expect(tabla[Modo.IMPERATIVO][Polaridad.AFIRMATIVA]).toMatchObject({
+        [Celda.SEGUNDA_SINGULAR]: 'da',
+        [Celda.TERCERA_SINGULAR]: 'dé',
+      });
+      expect(tabla[Modo.IMPERATIVO][Polaridad.NEGATIVA]).toMatchObject({
+        [Celda.SEGUNDA_SINGULAR]: 'des',
+        [Celda.TERCERA_SINGULAR]: 'dé',
+      });
+    });
+
+    it('oír: el indicativo se extiende al imperativo', () => {
+      const tabla = conjuego('oír');
+
+      expect(tabla[Modo.INDICATIVO][Tiempo.PRESENTE]).toMatchObject({
+        [Celda.PRIMERA_SINGULAR]: 'oigo',
+        [Celda.SEGUNDA_SINGULAR]: 'oyes',
+        [Celda.SEGUNDA_SINGULAR_VOSEO]: 'oís',
+      });
+      expect(tabla[Modo.IMPERATIVO][Polaridad.AFIRMATIVA]).toMatchObject({
+        [Celda.SEGUNDA_SINGULAR]: 'oye',
+        [Celda.SEGUNDA_SINGULAR_VOSEO]: 'oí',
+        [Celda.TERCERA_SINGULAR]: 'oiga',
+      });
+    });
+
+    it.each([
+      ['roer', ['roo', 'roigo', 'royo'], ['roa', 'roiga', 'roya']],
+      [
+        'corroer',
+        ['corroo', 'corroigo', 'corroyo'],
+        ['corroa', 'corroiga', 'corroya'],
+      ],
+      [
+        'roerse',
+        ['me roo', 'me roigo', 'me royo'],
+        ['me roa', 'me roiga', 'me roya'],
+      ],
+    ])('%s: variantes de la raíz', (verbo, presente, subjuntivo) => {
+      const tabla = conjuego(verbo);
+
+      expect(
+        tabla[Modo.INDICATIVO][Tiempo.PRESENTE][Celda.PRIMERA_SINGULAR],
+      ).toEqual(presente);
+      expect(
+        tabla[Modo.SUBJUNTIVO][Tiempo.PRESENTE][Celda.PRIMERA_SINGULAR],
+      ).toEqual(subjuntivo);
+    });
+
+    it('celda vacía', () => {
+      expect(
+        conjuego('solerse')[Modo.INDICATIVO][Tiempo.FUTURO][
+          Celda.PRIMERA_SINGULAR
+        ],
+      ).toBeNull();
+    });
+  });
+
+  describe('diccionario por defecto', () => {
+    const diccionario = new Map<string, EntradaVerbo>(
+      Object.entries(
+        JSON.parse(
+          readFileSync(
+            join(__dirname, '..', 'dict', 'por_defecto.json'),
+            'utf8',
+          ),
+        ),
+      ),
+    );
+    const verbos = [...diccionario].flatMap(([verbo, entrada]) => [
+      ...(entrada.abstracto ? [] : [verbo]),
+      ...(entrada.hijos ?? []),
+    ]);
+
+    it('conjuga todos los verbos', () => {
+      configurar(diccionario);
+
+      for (const verbo of verbos) {
+        expect(() => conjuego(verbo), verbo).not.toThrow();
+      }
+    });
+
+    it.each([
+      ['condecir', 'con'],
+      ['contradecir', 'contra'],
+      ['desdecir', 'des'],
+      ['predecir', 'pre'],
+    ])('%s: futuro doble e imperativo regular', (verbo, prefijo) => {
+      configurar(diccionario);
+      const tabla = conjuego(verbo);
+
+      expect(
+        tabla[Modo.INDICATIVO][Tiempo.PRESENTE][Celda.PRIMERA_SINGULAR],
+      ).toBe(`${prefijo}digo`);
+      expect(
+        tabla[Modo.INDICATIVO][Tiempo.PRETERITO][Celda.TERCERA_PLURAL],
+      ).toBe(`${prefijo}dijeron`);
+      expect(
+        tabla[Modo.INDICATIVO][Tiempo.FUTURO][Celda.PRIMERA_SINGULAR],
+      ).toEqual([`${prefijo}deciré`, `${prefijo}diré`]);
+      expect(
+        tabla[Modo.INDICATIVO][Tiempo.CONDICIONAL][Celda.PRIMERA_PLURAL],
+      ).toEqual([`${prefijo}deciríamos`, `${prefijo}diríamos`]);
+      expect(
+        tabla[Modo.IMPERATIVO][Polaridad.AFIRMATIVA][Celda.SEGUNDA_SINGULAR],
+      ).toBe(`${prefijo}dice`);
+      expect(tabla[FORMA_NO_PERSONAL][FormaNoPersonal.PARTICIPIO_PASADO]).toBe(
+        `${prefijo}dicho`,
+      );
+    });
+  });
+});
+
+describe('aplicarFormas', () => {
+  configurar(new Map());
+  const tabla = conjuego('hacer');
+
+  it('reemplaza solo las celdas indicadas', () => {
+    const resultado = aplicarFormas(tabla, {
+      [Modo.INDICATIVO]: {
+        [Tiempo.PRETERITO]: { [Celda.TERCERA_SINGULAR]: 'hizo' },
+      },
+      [FORMA_NO_PERSONAL]: { [FormaNoPersonal.PARTICIPIO_PASADO]: null },
+    });
+
+    expect(resultado[Modo.INDICATIVO][Tiempo.PRETERITO]).toEqual({
+      ...tabla[Modo.INDICATIVO][Tiempo.PRETERITO],
+      [Celda.TERCERA_SINGULAR]: 'hizo',
+    });
+    expect(
+      resultado[FORMA_NO_PERSONAL][FormaNoPersonal.PARTICIPIO_PASADO],
+    ).toBeNull();
+    expect(resultado[Modo.SUBJUNTIVO]).toEqual(tabla[Modo.SUBJUNTIVO]);
+  });
+
+  it('acepta variantes', () => {
+    const resultado = aplicarFormas(tabla, {
+      [Modo.INDICATIVO]: {
+        [Tiempo.PRESENTE]: { [Celda.PRIMERA_SINGULAR]: ['hago', 'fago'] },
+      },
+    });
+
+    expect(
+      resultado[Modo.INDICATIVO][Tiempo.PRESENTE][Celda.PRIMERA_SINGULAR],
+    ).toEqual(['hago', 'fago']);
+  });
+
+  it('no modifica la tabla original', () => {
+    const original = structuredClone(tabla);
+
+    aplicarFormas(tabla, {
+      [Modo.INDICATIVO]: {
+        [Tiempo.PRETERITO]: { [Celda.TERCERA_SINGULAR]: 'hizo' },
+      },
+    });
+
+    expect(tabla).toEqual(original);
   });
 });

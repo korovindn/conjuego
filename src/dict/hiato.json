@@ -21,8 +21,7 @@
     "hiato": true
   },
   "airar": {
-    "hiato": true,
-    "hijos": ["desairar"]
+    "hiato": true
   },
   "aislar": {
     "hiato": true
@@ -40,12 +39,10 @@
     "hiato": true
   },
   "arriar": {
-    "hiato": true,
-    "hijos": ["descarriar"]
+    "hiato": true
   },
   "aullar": {
-    "hiato": true,
-    "hijos": ["maullar"]
+    "hiato": true
   },
   "aunar": {
     "hiato": true
@@ -61,29 +58,25 @@
   },
   "ceptuar": {
     "abstracto": true,
-    "hiato": true,
-    "hijos": ["conceptuar", "exceptuar", "preceptuar"]
+    "hiato": true
   },
   "chirriar": {
     "hiato": true
   },
   "ciar": {
-    "hiato": true,
-    "hijos": ["rociar", "vaciar"]
+    "hiato": true
   },
   "consensuar": {
     "hiato": true
   },
   "continuar": {
-    "hiato": true,
-    "hijos": ["descontinuar"]
+    "hiato": true
   },
   "contrariar": {
     "hiato": true
   },
   "criar": {
-    "hiato": true,
-    "hijos": ["malcriar", "recriar"]
+    "hiato": true
   },
   "descafeinar": {
     "hiato": true
@@ -98,8 +91,7 @@
     "hiato": true
   },
   "embaular": {
-    "hiato": true,
-    "hijos": ["desembaular"]
+    "hiato": true
   },
   "engreír": {
     "hiato": true
@@ -108,8 +100,7 @@
     "hiato": true
   },
   "enraizar": {
-    "hiato": true,
-    "hijos": ["desenraizar"]
+    "hiato": true
   },
   "esquiar": {
     "hiato": true
@@ -121,8 +112,7 @@
     "hiato": true
   },
   "fiar": {
-    "hiato": true,
-    "hijos": ["confiar", "desafiar", "desconfiar", "porfiar"]
+    "hiato": true
   },
   "fluctuar": {
     "hiato": true
@@ -132,8 +122,7 @@
   },
   "friar": {
     "abstracto": true,
-    "hiato": true,
-    "hijos": ["enfriar", "escalofriar", "resfriar"]
+    "hiato": true
   },
   "garuar": {
     "hiato": true
@@ -145,34 +134,13 @@
     "hiato": true
   },
   "grafiar": {
-    "hiato": true,
-    "hijos": [
-      "autografiar",
-      "biografiar",
-      "cablegrafiar",
-      "calcografiar",
-      "caligrafiar",
-      "cartografiar",
-      "coreografiar",
-      "ecografiar",
-      "estenografiar",
-      "fotografiar",
-      "litografiar",
-      "mecanografiar",
-      "mimeografiar",
-      "radiografiar",
-      "serigrafiar",
-      "taquigrafiar",
-      "telegrafiar",
-      "xerografiar"
-    ]
+    "hiato": true
   },
   "guiar": {
     "hiato": true
   },
   "habituar": {
-    "hiato": true,
-    "hijos": ["deshabituar"]
+    "hiato": true
   },
   "hastiar": {
     "hiato": true
@@ -182,21 +150,18 @@
   },
   "hibir": {
     "abstracto": true,
-    "hiato": true,
-    "hijos": ["cohibir", "prohibir"]
+    "hiato": true
   },
   "hijar": {
     "abstracto": true,
-    "hiato": true,
-    "hijos": ["ahijar", "desahijar", "prohijar"]
+    "hiato": true
   },
   "homogeneizar": {
     "hiato": true
   },
   "humar": {
     "abstracto": true,
-    "hiato": true,
-    "hijos": ["ahumar", "sahumar"]
+    "hiato": true
   },
   "individuar": {
     "hiato": true
@@ -214,8 +179,7 @@
     "hiato": true
   },
   "liar": {
-    "hiato": true,
-    "hijos": ["aliar", "ampliar", "desliar"]
+    "hiato": true
   },
   "menstruar": {
     "hiato": true
@@ -224,8 +188,7 @@
     "hiato": true
   },
   "piar": {
-    "hiato": true,
-    "hijos": ["espiar", "expiar", "jipiar"]
+    "hiato": true
   },
   "puntuar": {
     "hiato": true
@@ -265,36 +228,23 @@
   },
   "tenuar": {
     "abstracto": true,
-    "hiato": true,
-    "hijos": ["atenuar", "extenuar"]
+    "hiato": true
   },
   "triar": {
-    "hiato": true,
-    "hijos": ["estriar"]
+    "hiato": true
   },
   "usufructuar": {
     "hiato": true
   },
   "valuar": {
-    "hiato": true,
-    "hijos": ["avaluar", "devaluar", "evaluar", "reevaluar", "revaluar"]
+    "hiato": true
   },
   "variar": {
-    "hiato": true,
-    "hijos": ["desvariar"]
+    "hiato": true
   },
   "viar": {
     "abstracto": true,
-    "hiato": true,
-    "hijos": [
-      "ataviar",
-      "aviar",
-      "desataviar",
-      "desviar",
-      "enviar",
-      "extraviar",
-      "reenviar"
-    ]
+    "hiato": true
   },
   "zurriar": {
     "hiato": true

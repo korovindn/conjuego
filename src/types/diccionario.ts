@@ -36,6 +36,9 @@ export interface EntradaVerbo {
   formas?: Formas;
 }
 
-export type Ajustes = Pick<EntradaVerbo, 'zc' | 'alternancia' | 'hiato'>;
+export type Ajustes = Pick<
+  EntradaVerbo,
+  'zc' | 'alternancia' | 'hiato' | 'raices'
+>;
 
 export type Diccionario = ReadonlyMap<string, EntradaVerbo>;

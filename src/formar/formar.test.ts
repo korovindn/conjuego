@@ -34,4 +34,26 @@ describe('ortografiar', () => {
   ] as const)('hiato: %s + %s → %s', (raiz, clase, desinencia, esperado) => {
     expect(formar(raiz, clase, desinencia, { hiato: true })).toBe(esperado);
   });
+
+  it.each([
+    ['teng', Clase.ER, 'o', 'tengo'],
+    ['tuv', Clase.ER, 'íste', 'tuviste'],
+    ['tuv', Clase.ER, 'iéramos', 'tuviéramos'],
+    ['dij', Clase.IR, 'iéron', 'dijeron'],
+    ['tendr', Clase.ER, 'émos', 'tendremos'],
+    ['tendr', Clase.ER, 'ía', 'tendría'],
+  ] as const)(
+    'raíz irregular: %s + %s → %s',
+    (raiz, clase, desinencia, esperado) => {
+      expect(formar('', clase, desinencia, {}, raiz)).toBe(esperado);
+    },
+  );
+
+  it('raíz con variantes', () => {
+    expect(formar('roer', Clase.ER, 'o', {}, ['ro', 'roig', 'roy'])).toEqual([
+      'roo',
+      'roigo',
+      'royo',
+    ]);
+  });
 });

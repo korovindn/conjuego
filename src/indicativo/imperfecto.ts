@@ -1,11 +1,11 @@
 import { formarPorClase } from '../formar';
-import { Ajustes, Celda, Clase, Paradigma } from '../types';
+import { Ajustes, Celda, Clase, Forma, Paradigma } from '../types';
 
 export const imperfecto = (
   raiz: string,
   clase: Clase,
   ajustes: Ajustes = {},
-): Paradigma<string> => {
+): Paradigma<Forma> => {
   const forma = formarPorClase(raiz, clase, ajustes);
 
   return {

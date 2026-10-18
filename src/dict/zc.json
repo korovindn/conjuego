@@ -1,13 +1,15 @@
 {
   "cocer": {
-    "zc": false,
-    "hijos": ["descocer", "escocer", "precocer", "recocer"]
+    "zc": false
   },
   "facer": {
     "abstracto": true,
-    "zc": false,
-    "hijos": ["desfacer", "satisfacer"]
+    "zc": false
   },
-  "hacer": { "zc": false, "hijos": ["contrahacer", "deshacer", "rehacer"] },
-  "mecer": { "zc": false, "hijos": ["remecer"] }
+  "hacer": {
+    "zc": false
+  },
+  "mecer": {
+    "zc": false
+  }
 }

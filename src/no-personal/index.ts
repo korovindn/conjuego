@@ -19,10 +19,10 @@ export const participioPasado = (
   ajustes: Ajustes = {},
 ) => formarPorClase(raiz, clase, ajustes)('ádo', 'ído', 'ído');
 
-export const mapear = (
-  tabla: Tabla<string>[typeof FORMA_NO_PERSONAL],
-  mapeador: (forma: string, tipo: FormaNoPersonal) => string,
-): Tabla<string>[typeof FORMA_NO_PERSONAL] => ({
+export const mapear = <F, G>(
+  tabla: Tabla<F>[typeof FORMA_NO_PERSONAL],
+  mapeador: (forma: F, tipo: FormaNoPersonal) => G,
+): Tabla<G>[typeof FORMA_NO_PERSONAL] => ({
   [FormaNoPersonal.INFINITIVO]: mapeador(
     tabla[FormaNoPersonal.INFINITIVO],
     FormaNoPersonal.INFINITIVO,

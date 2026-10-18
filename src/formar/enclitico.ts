@@ -4,7 +4,7 @@ type Elision = [final: RegExp, ante: RegExp];
 
 const ELISIONES: Elision[] = [
   [/(?<=mo)s$/, /^(?:nos|se)/],
-  [/d$/, /^os/],
+  [/(?<=..)d$/, /^os/],
 ];
 
 const elidir = (forma: string, enclitico: string) => {

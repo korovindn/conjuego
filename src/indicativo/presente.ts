@@ -1,15 +1,16 @@
 import { formarPorClase } from '../formar';
-import { Ajustes, Celda, Clase, Paradigma } from '../types';
+import { Ajustes, Celda, Clase, Forma, Paradigma } from '../types';
 
 export const presente = (
   raiz: string,
   clase: Clase,
   ajustes: Ajustes = {},
-): Paradigma<string> => {
+): Paradigma<Forma> => {
   const forma = formarPorClase(raiz, clase, ajustes);
+  const yo = formarPorClase(raiz, clase, ajustes, ajustes.raices?.presente);
 
   return {
-    [Celda.PRIMERA_SINGULAR]: forma('o', 'o', 'o'),
+    [Celda.PRIMERA_SINGULAR]: yo('o', 'o', 'o'),
     [Celda.SEGUNDA_SINGULAR]: forma('as', 'es', 'es'),
     [Celda.SEGUNDA_SINGULAR_VOSEO]: forma('ás', 'és', 'ís'),
     [Celda.TERCERA_SINGULAR]: forma('a', 'e', 'e'),

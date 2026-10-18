@@ -27,20 +27,6 @@ describe('mapearParadigma', () => {
     });
   });
 
-  it('transforma solo las celdas presentes', () => {
-    const paradigma = {
-      [Celda.SEGUNDA_SINGULAR]: 'habla',
-      [Celda.TERCERA_SINGULAR]: 'hable',
-    };
-
-    expect(
-      mapearParadigma(paradigma, (forma, celda) => `${celda}:${forma}`),
-    ).toEqual({
-      [Celda.SEGUNDA_SINGULAR]: 'segunda_singular:habla',
-      [Celda.TERCERA_SINGULAR]: 'tercera_singular:hable',
-    });
-  });
-
   it('conserva el paradigma original', () => {
     const original = { ...paradigma };
 

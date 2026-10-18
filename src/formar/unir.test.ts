@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { Clase } from '../types';
-import { unir } from './unir';
+import { unir, unirLiteral } from './unir';
 
 describe('unir', () => {
   it.each([
@@ -144,4 +144,23 @@ describe('unir', () => {
       expect(unir(raiz, clase, desinencia)).toBe(esperado);
     },
   );
+
+  it.each([
+    ['teng', Clase.ER, 'o', 'tengo'],
+    ['dig', Clase.IR, 'a', 'diga'],
+    ['hic', Clase.ER, 'o', 'hico'],
+    ['ve', Clase.ER, 'o', 'veo'],
+    ['dij', Clase.IR, 'iéron', 'dijéron'],
+    ['traj', Clase.ER, 'iéra', 'trajéra'],
+    ['tuv', Clase.ER, 'iéron', 'tuviéron'],
+  ] as const)(
+    'raíz literal: %s + %s → %s',
+    (raiz, clase, desinencia, esperado) => {
+      expect(unirLiteral(raiz, clase, desinencia)).toBe(esperado);
+    },
+  );
+
+  it('j de una raíz regular conserva la i', () => {
+    expect(unir('tej', Clase.ER, 'iéron')).toBe('tejiéron');
+  });
 });

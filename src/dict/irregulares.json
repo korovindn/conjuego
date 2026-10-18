@@ -1,0 +1,836 @@
+{
+  "abrir": {
+    "formas": {
+      "no_personal": {
+        "participio_pasado": "abierto"
+      }
+    }
+  },
+  "andar": {
+    "raices": {
+      "preterito": "anduv"
+    }
+  },
+  "antedecir": {
+    "formas": {
+      "imperativo": {
+        "afirmativa": {
+          "segunda_singular": "antedice"
+        }
+      }
+    }
+  },
+  "asir": {
+    "raices": {
+      "presente": "asg"
+    }
+  },
+  "bendecir": {
+    "raices": {
+      "presente": "bendig",
+      "preterito": "bendij"
+    }
+  },
+  "caber": {
+    "raices": {
+      "presente": "quep",
+      "preterito": "cup",
+      "futuro": "cabr"
+    }
+  },
+  "caer": {
+    "raices": {
+      "presente": "caig"
+    }
+  },
+  "condecir": {
+    "raices": {
+      "presente": "condig",
+      "preterito": "condij",
+      "futuro": ["condecir", "condir"]
+    },
+    "formas": {
+      "no_personal": {
+        "participio_pasado": "condicho"
+      }
+    }
+  },
+  "contradecir": {
+    "raices": {
+      "presente": "contradig",
+      "preterito": "contradij",
+      "futuro": ["contradecir", "contradir"]
+    },
+    "formas": {
+      "no_personal": {
+        "participio_pasado": "contradicho"
+      }
+    }
+  },
+  "cubrir": {
+    "formas": {
+      "no_personal": {
+        "participio_pasado": "cubierto"
+      }
+    }
+  },
+  "dar": {
+    "raices": {
+      "preterito": "d"
+    },
+    "formas": {
+      "indicativo": {
+        "presente": {
+          "primera_singular": "doy"
+        },
+        "preterito": {
+          "primera_singular": "di",
+          "tercera_singular": "dio"
+        }
+      },
+      "subjuntivo": {
+        "presente": {
+          "primera_singular": "dé",
+          "tercera_singular": "dé"
+        }
+      }
+    }
+  },
+  "decir": {
+    "raices": {
+      "presente": "dig",
+      "preterito": "dij",
+      "futuro": "dir"
+    },
+    "formas": {
+      "imperativo": {
+        "afirmativa": {
+          "segunda_singular": "di"
+        }
+      },
+      "no_personal": {
+        "participio_pasado": "dicho"
+      }
+    }
+  },
+  "desdecir": {
+    "raices": {
+      "presente": "desdig",
+      "preterito": "desdij",
+      "futuro": ["desdecir", "desdir"]
+    },
+    "formas": {
+      "no_personal": {
+        "participio_pasado": "desdicho"
+      }
+    }
+  },
+  "ducir": {
+    "abstracto": true,
+    "raices": {
+      "preterito": "duj"
+    }
+  },
+  "erguir": {
+    "formas": {
+      "indicativo": {
+        "presente": {
+          "primera_singular": ["yergo", "irgo"],
+          "segunda_singular": ["yergues", "irgues"],
+          "tercera_singular": ["yergue", "irgue"],
+          "tercera_plural": ["yerguen", "irguen"]
+        }
+      },
+      "subjuntivo": {
+        "presente": {
+          "primera_singular": ["yerga", "irga"],
+          "segunda_singular": ["yergas", "irgas"],
+          "segunda_singular_voseo": ["yergas", "irgas"],
+          "tercera_singular": ["yerga", "irga"],
+          "primera_plural": ["irgamos", "yergamos"],
+          "segunda_plural": ["irgáis", "yergáis"],
+          "tercera_plural": ["yergan", "irgan"]
+        }
+      }
+    }
+  },
+  "escribir": {
+    "formas": {
+      "no_personal": {
+        "participio_pasado": "escrito"
+      }
+    }
+  },
+  "estar": {
+    "raices": {
+      "preterito": "estuv"
+    },
+    "formas": {
+      "indicativo": {
+        "presente": {
+          "primera_singular": "estoy",
+          "segunda_singular": "estás",
+          "tercera_singular": "está",
+          "tercera_plural": "están"
+        }
+      },
+      "subjuntivo": {
+        "presente": {
+          "primera_singular": "esté",
+          "segunda_singular": "estés",
+          "segunda_singular_voseo": "estés",
+          "tercera_singular": "esté",
+          "tercera_plural": "estén"
+        }
+      }
+    }
+  },
+  "facer": {
+    "raices": {
+      "presente": "fag",
+      "preterito": "fic",
+      "futuro": "far"
+    },
+    "formas": {
+      "indicativo": {
+        "preterito": {
+          "tercera_singular": "fizo"
+        }
+      },
+      "imperativo": {
+        "afirmativa": {
+          "segunda_singular": "faz"
+        }
+      },
+      "no_personal": {
+        "participio_pasado": "fecho"
+      }
+    }
+  },
+  "freír": {
+    "formas": {
+      "no_personal": {
+        "participio_pasado": ["frito", "freído"]
+      }
+    }
+  },
+  "haber": {
+    "raices": {
+      "presente": "hay",
+      "preterito": "hub",
+      "futuro": "habr"
+    },
+    "formas": {
+      "indicativo": {
+        "presente": {
+          "primera_singular": "he",
+          "segunda_singular": "has",
+          "segunda_singular_voseo": "has",
+          "tercera_singular": ["ha", "hay"],
+          "primera_plural": "hemos",
+          "tercera_plural": "han"
+        }
+      },
+      "imperativo": {
+        "afirmativa": {
+          "segunda_singular": ["he", "habe"],
+          "segunda_singular_voseo": ["he", "habe"]
+        }
+      }
+    }
+  },
+  "hacer": {
+    "raices": {
+      "presente": "hag",
+      "preterito": "hic",
+      "futuro": "har"
+    },
+    "formas": {
+      "indicativo": {
+        "preterito": {
+          "tercera_singular": "hizo"
+        }
+      },
+      "imperativo": {
+        "afirmativa": {
+          "segunda_singular": "haz"
+        }
+      },
+      "no_personal": {
+        "participio_pasado": "hecho"
+      }
+    }
+  },
+  "imprimir": {
+    "formas": {
+      "no_personal": {
+        "participio_pasado": ["impreso", "imprimido"]
+      }
+    }
+  },
+  "interdecir": {
+    "formas": {
+      "imperativo": {
+        "afirmativa": {
+          "segunda_singular": "interdice"
+        }
+      }
+    }
+  },
+  "ir": {
+    "raices": {
+      "presente": "vay"
+    },
+    "formas": {
+      "indicativo": {
+        "presente": {
+          "primera_singular": "voy",
+          "segunda_singular": "vas",
+          "segunda_singular_voseo": "vas",
+          "tercera_singular": "va",
+          "primera_plural": "vamos",
+          "segunda_plural": "vais",
+          "tercera_plural": "van"
+        },
+        "imperfecto": {
+          "primera_singular": "iba",
+          "segunda_singular": "ibas",
+          "segunda_singular_voseo": "ibas",
+          "tercera_singular": "iba",
+          "primera_plural": "íbamos",
+          "segunda_plural": "ibais",
+          "tercera_plural": "iban"
+        },
+        "preterito": {
+          "primera_singular": "fui",
+          "segunda_singular": "fuiste",
+          "segunda_singular_voseo": "fuiste",
+          "tercera_singular": "fue",
+          "primera_plural": "fuimos",
+          "segunda_plural": "fuisteis",
+          "tercera_plural": "fueron"
+        }
+      },
+      "subjuntivo": {
+        "imperfecto": {
+          "ra": {
+            "primera_singular": "fuera",
+            "segunda_singular": "fueras",
+            "segunda_singular_voseo": "fueras",
+            "tercera_singular": "fuera",
+            "primera_plural": "fuéramos",
+            "segunda_plural": "fuerais",
+            "tercera_plural": "fueran"
+          },
+          "se": {
+            "primera_singular": "fuese",
+            "segunda_singular": "fueses",
+            "segunda_singular_voseo": "fueses",
+            "tercera_singular": "fuese",
+            "primera_plural": "fuésemos",
+            "segunda_plural": "fueseis",
+            "tercera_plural": "fuesen"
+          }
+        }
+      },
+      "imperativo": {
+        "afirmativa": {
+          "segunda_singular": "ve",
+          "segunda_singular_voseo": "andá",
+          "primera_plural": ["vamos", "vayamos"]
+        }
+      },
+      "no_personal": {
+        "gerundio": "yendo"
+      }
+    }
+  },
+  "maldecir": {
+    "raices": {
+      "presente": "maldig",
+      "preterito": "maldij"
+    }
+  },
+  "manuscribir": {
+    "formas": {
+      "no_personal": {
+        "participio_pasado": "manuscrito"
+      }
+    }
+  },
+  "morir": {
+    "formas": {
+      "no_personal": {
+        "participio_pasado": "muerto"
+      }
+    }
+  },
+  "oír": {
+    "raices": {
+      "presente": "oig"
+    },
+    "formas": {
+      "indicativo": {
+        "presente": {
+          "segunda_singular": "oyes",
+          "tercera_singular": "oye",
+          "tercera_plural": "oyen"
+        }
+      }
+    }
+  },
+  "placer": {
+    "formas": {
+      "indicativo": {
+        "preterito": {
+          "tercera_singular": ["plació", "plugo"]
+        }
+      },
+      "subjuntivo": {
+        "presente": {
+          "tercera_singular": ["plazca", "plegue", "plega"]
+        },
+        "imperfecto": {
+          "ra": {
+            "tercera_singular": ["placiera", "pluguiera"]
+          },
+          "se": {
+            "tercera_singular": ["placiese", "pluguiese"]
+          }
+        }
+      },
+      "imperativo": {
+        "afirmativa": {
+          "tercera_singular": "plazca"
+        }
+      }
+    }
+  },
+  "poder": {
+    "raices": {
+      "preterito": "pud",
+      "futuro": "podr"
+    },
+    "formas": {
+      "no_personal": {
+        "gerundio": "pudiendo"
+      }
+    }
+  },
+  "podrir": {
+    "formas": {
+      "indicativo": {
+        "presente": {
+          "primera_singular": "pudro",
+          "segunda_singular": "pudres",
+          "segunda_singular_voseo": "pudrís",
+          "tercera_singular": "pudre",
+          "primera_plural": ["pudrimos", "podrimos"],
+          "segunda_plural": ["pudrís", "podrís"],
+          "tercera_plural": "pudren"
+        },
+        "imperfecto": {
+          "primera_singular": ["pudría", "podría"],
+          "segunda_singular": ["pudrías", "podrías"],
+          "segunda_singular_voseo": ["pudrías", "podrías"],
+          "tercera_singular": ["pudría", "podría"],
+          "primera_plural": ["pudríamos", "podríamos"],
+          "segunda_plural": ["pudríais", "podríais"],
+          "tercera_plural": ["pudrían", "podrían"]
+        },
+        "preterito": {
+          "primera_singular": ["pudrí", "podrí"],
+          "segunda_singular": ["pudriste", "podriste"],
+          "segunda_singular_voseo": ["pudriste", "podriste"],
+          "tercera_singular": ["pudrió", "podrió"],
+          "primera_plural": ["pudrimos", "podrimos"],
+          "segunda_plural": ["pudristeis", "podristeis"],
+          "tercera_plural": ["pudrieron", "podrieron"]
+        },
+        "futuro": {
+          "primera_singular": ["pudriré", "podriré"],
+          "segunda_singular": ["pudrirás", "podrirás"],
+          "segunda_singular_voseo": ["pudrirás", "podrirás"],
+          "tercera_singular": ["pudrirá", "podrirá"],
+          "primera_plural": ["pudriremos", "podriremos"],
+          "segunda_plural": ["pudriréis", "podriréis"],
+          "tercera_plural": ["pudrirán", "podrirán"]
+        },
+        "condicional": {
+          "primera_singular": ["pudriría", "podriría"],
+          "segunda_singular": ["pudrirías", "podrirías"],
+          "segunda_singular_voseo": ["pudrirías", "podrirías"],
+          "tercera_singular": ["pudriría", "podriría"],
+          "primera_plural": ["pudriríamos", "podriríamos"],
+          "segunda_plural": ["pudriríais", "podriríais"],
+          "tercera_plural": ["pudrirían", "podrirían"]
+        }
+      },
+      "subjuntivo": {
+        "presente": {
+          "primera_singular": "pudra",
+          "segunda_singular": "pudras",
+          "segunda_singular_voseo": "pudras",
+          "tercera_singular": "pudra",
+          "primera_plural": "pudramos",
+          "segunda_plural": "pudráis",
+          "tercera_plural": "pudran"
+        },
+        "imperfecto": {
+          "ra": {
+            "primera_singular": "pudriera",
+            "segunda_singular": "pudrieras",
+            "segunda_singular_voseo": "pudrieras",
+            "tercera_singular": "pudriera",
+            "primera_plural": "pudriéramos",
+            "segunda_plural": "pudrierais",
+            "tercera_plural": "pudrieran"
+          },
+          "se": {
+            "primera_singular": "pudriese",
+            "segunda_singular": "pudrieses",
+            "segunda_singular_voseo": "pudrieses",
+            "tercera_singular": "pudriese",
+            "primera_plural": "pudriésemos",
+            "segunda_plural": "pudrieseis",
+            "tercera_plural": "pudriesen"
+          }
+        }
+      },
+      "imperativo": {
+        "afirmativa": {
+          "segunda_singular": "pudre",
+          "segunda_singular_voseo": ["pudrí", "podrí"],
+          "segunda_plural": ["pudrid", "podrid"]
+        }
+      },
+      "no_personal": {
+        "gerundio": "pudriendo",
+        "participio_pasado": "podrido"
+      }
+    }
+  },
+  "poner": {
+    "raices": {
+      "presente": "pong",
+      "preterito": "pus",
+      "futuro": "pondr"
+    },
+    "formas": {
+      "imperativo": {
+        "afirmativa": {
+          "segunda_singular": "pon"
+        }
+      },
+      "no_personal": {
+        "participio_pasado": "puesto"
+      }
+    }
+  },
+  "predecir": {
+    "raices": {
+      "presente": "predig",
+      "preterito": "predij",
+      "futuro": ["predecir", "predir"]
+    },
+    "formas": {
+      "no_personal": {
+        "participio_pasado": "predicho"
+      }
+    }
+  },
+  "proveer": {
+    "formas": {
+      "no_personal": {
+        "participio_pasado": ["provisto", "proveído"]
+      }
+    }
+  },
+  "pudrir": {
+    "formas": {
+      "indicativo": {
+        "presente": {
+          "primera_plural": ["pudrimos", "podrimos"],
+          "segunda_plural": ["pudrís", "podrís"]
+        },
+        "imperfecto": {
+          "primera_singular": ["pudría", "podría"],
+          "segunda_singular": ["pudrías", "podrías"],
+          "segunda_singular_voseo": ["pudrías", "podrías"],
+          "tercera_singular": ["pudría", "podría"],
+          "primera_plural": ["pudríamos", "podríamos"],
+          "segunda_plural": ["pudríais", "podríais"],
+          "tercera_plural": ["pudrían", "podrían"]
+        },
+        "preterito": {
+          "primera_singular": ["pudrí", "podrí"],
+          "segunda_singular": ["pudriste", "podriste"],
+          "segunda_singular_voseo": ["pudriste", "podriste"],
+          "tercera_singular": ["pudrió", "podrió"],
+          "primera_plural": ["pudrimos", "podrimos"],
+          "segunda_plural": ["pudristeis", "podristeis"],
+          "tercera_plural": ["pudrieron", "podrieron"]
+        },
+        "futuro": {
+          "primera_singular": ["pudriré", "podriré"],
+          "segunda_singular": ["pudrirás", "podrirás"],
+          "segunda_singular_voseo": ["pudrirás", "podrirás"],
+          "tercera_singular": ["pudrirá", "podrirá"],
+          "primera_plural": ["pudriremos", "podriremos"],
+          "segunda_plural": ["pudriréis", "podriréis"],
+          "tercera_plural": ["pudrirán", "podrirán"]
+        },
+        "condicional": {
+          "primera_singular": ["pudriría", "podriría"],
+          "segunda_singular": ["pudrirías", "podrirías"],
+          "segunda_singular_voseo": ["pudrirías", "podrirías"],
+          "tercera_singular": ["pudriría", "podriría"],
+          "primera_plural": ["pudriríamos", "podriríamos"],
+          "segunda_plural": ["pudriríais", "podriríais"],
+          "tercera_plural": ["pudrirían", "podrirían"]
+        }
+      },
+      "imperativo": {
+        "afirmativa": {
+          "segunda_singular_voseo": ["pudrí", "podrí"],
+          "segunda_plural": ["pudrid", "podrid"]
+        }
+      },
+      "no_personal": {
+        "participio_pasado": "podrido"
+      }
+    }
+  },
+  "querer": {
+    "raices": {
+      "preterito": "quis",
+      "futuro": "querr"
+    }
+  },
+  "raer": {
+    "raices": {
+      "presente": ["raig", "ray"]
+    }
+  },
+  "reescribir": {
+    "formas": {
+      "no_personal": {
+        "participio_pasado": "reescrito"
+      }
+    }
+  },
+  "roer": {
+    "raices": {
+      "presente": ["ro", "roig", "roy"]
+    }
+  },
+  "romper": {
+    "formas": {
+      "no_personal": {
+        "participio_pasado": "roto"
+      }
+    }
+  },
+  "saber": {
+    "raices": {
+      "presente": "sep",
+      "preterito": "sup",
+      "futuro": "sabr"
+    },
+    "formas": {
+      "indicativo": {
+        "presente": {
+          "primera_singular": "sé"
+        }
+      }
+    }
+  },
+  "salir": {
+    "raices": {
+      "presente": "salg",
+      "futuro": "saldr"
+    },
+    "formas": {
+      "imperativo": {
+        "afirmativa": {
+          "segunda_singular": "sal"
+        }
+      }
+    }
+  },
+  "satisfacer": {
+    "formas": {
+      "imperativo": {
+        "afirmativa": {
+          "segunda_singular": ["satisfaz", "satisface"]
+        }
+      }
+    }
+  },
+  "scribir": {
+    "abstracto": true,
+    "formas": {
+      "no_personal": {
+        "participio_pasado": ["scrito", "scripto"]
+      }
+    }
+  },
+  "ser": {
+    "raices": {
+      "presente": "se"
+    },
+    "formas": {
+      "indicativo": {
+        "presente": {
+          "primera_singular": "soy",
+          "segunda_singular": "eres",
+          "segunda_singular_voseo": "sos",
+          "tercera_singular": "es",
+          "primera_plural": "somos",
+          "segunda_plural": "sois",
+          "tercera_plural": "son"
+        },
+        "imperfecto": {
+          "primera_singular": "era",
+          "segunda_singular": "eras",
+          "segunda_singular_voseo": "eras",
+          "tercera_singular": "era",
+          "primera_plural": "éramos",
+          "segunda_plural": "erais",
+          "tercera_plural": "eran"
+        },
+        "preterito": {
+          "primera_singular": "fui",
+          "segunda_singular": "fuiste",
+          "segunda_singular_voseo": "fuiste",
+          "tercera_singular": "fue",
+          "primera_plural": "fuimos",
+          "segunda_plural": "fuisteis",
+          "tercera_plural": "fueron"
+        }
+      },
+      "subjuntivo": {
+        "imperfecto": {
+          "ra": {
+            "primera_singular": "fuera",
+            "segunda_singular": "fueras",
+            "segunda_singular_voseo": "fueras",
+            "tercera_singular": "fuera",
+            "primera_plural": "fuéramos",
+            "segunda_plural": "fuerais",
+            "tercera_plural": "fueran"
+          },
+          "se": {
+            "primera_singular": "fuese",
+            "segunda_singular": "fueses",
+            "segunda_singular_voseo": "fueses",
+            "tercera_singular": "fuese",
+            "primera_plural": "fuésemos",
+            "segunda_plural": "fueseis",
+            "tercera_plural": "fuesen"
+          }
+        }
+      },
+      "imperativo": {
+        "afirmativa": {
+          "segunda_singular": "sé",
+          "segunda_singular_voseo": "sé"
+        }
+      }
+    }
+  },
+  "sobrescribir": {
+    "formas": {
+      "no_personal": {
+        "participio_pasado": "sobrescrito"
+      }
+    }
+  },
+  "solver": {
+    "formas": {
+      "no_personal": {
+        "participio_pasado": "suelto"
+      }
+    }
+  },
+  "tener": {
+    "raices": {
+      "presente": "teng",
+      "preterito": "tuv",
+      "futuro": "tendr"
+    },
+    "formas": {
+      "imperativo": {
+        "afirmativa": {
+          "segunda_singular": "ten"
+        }
+      }
+    }
+  },
+  "traer": {
+    "raices": {
+      "presente": "traig",
+      "preterito": "traj"
+    }
+  },
+  "valer": {
+    "raices": {
+      "presente": "valg",
+      "futuro": "valdr"
+    }
+  },
+  "venir": {
+    "raices": {
+      "presente": "veng",
+      "preterito": "vin",
+      "futuro": "vendr"
+    },
+    "formas": {
+      "imperativo": {
+        "afirmativa": {
+          "segunda_singular": "ven"
+        }
+      }
+    }
+  },
+  "ver": {
+    "raices": {
+      "presente": "ve"
+    },
+    "formas": {
+      "indicativo": {
+        "imperfecto": {
+          "primera_singular": "veía",
+          "segunda_singular": "veías",
+          "segunda_singular_voseo": "veías",
+          "tercera_singular": "veía",
+          "primera_plural": "veíamos",
+          "segunda_plural": "veíais",
+          "tercera_plural": "veían"
+        }
+      },
+      "no_personal": {
+        "participio_pasado": "visto"
+      }
+    }
+  },
+  "volver": {
+    "formas": {
+      "no_personal": {
+        "participio_pasado": "vuelto"
+      }
+    }
+  },
+  "yacer": {
+    "raices": {
+      "presente": ["yazc", "yazg", "yag"]
+    },
+    "formas": {
+      "imperativo": {
+        "afirmativa": {
+          "segunda_singular": ["yace", "yaz"]
+        }
+      }
+    }
+  }
+}

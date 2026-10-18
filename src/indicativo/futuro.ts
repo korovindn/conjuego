@@ -1,13 +1,20 @@
 import { formar } from '../formar';
-import { Ajustes, Celda, Clase, Paradigma } from '../types';
+import { Ajustes, Celda, Clase, Forma, Paradigma } from '../types';
 
 export const futuro = (
   raiz: string,
   clase: Clase,
   ajustes: Ajustes = {},
-): Paradigma<string> => {
+): Paradigma<Forma> => {
+  const raizIrregular = ajustes.raices?.futuro;
   const forma = (terminacion: string) =>
-    formar(raiz, clase, `${clase}${terminacion}`, ajustes);
+    formar(
+      raiz,
+      clase,
+      raizIrregular === undefined ? `${clase}${terminacion}` : terminacion,
+      ajustes,
+      raizIrregular,
+    );
 
   return {
     [Celda.PRIMERA_SINGULAR]: forma('é'),

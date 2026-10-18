@@ -23,9 +23,15 @@ const EMPIEZA_POR_ABIERTA = new RegExp(`^${ABIERTA}`);
 const TERMINA_EN_VOCAL = new RegExp(`(?:[aeo]|${U_SONORA})$`);
 const TERMINA_EN_U_SONORA = new RegExp(`(?:ú|${U_SONORA})$`);
 const ABSORBE_I_ATONA = /(?:ñ|ll|i)$/;
+const ABSORBE_I_ATONA_LITERAL = /(?:ñ|ll|i|j)$/;
 
-const adaptarDesinencia = (raiz: string, clase: Clase, desinencia: string) => {
-  if (ABSORBE_I_ATONA.test(raiz)) {
+const adaptarDesinencia = (
+  raiz: string,
+  clase: Clase,
+  desinencia: string,
+  absorbe = ABSORBE_I_ATONA,
+) => {
+  if (absorbe.test(raiz)) {
     return desinencia.replace(I_ATONA_ANTE_VOCAL, '');
   }
 
@@ -86,3 +92,6 @@ export const unir = (
 
   return `${raizAdaptada}${desinenciaAdaptada}`;
 };
+
+export const unirLiteral = (raiz: string, clase: Clase, desinencia: string) =>
+  `${raiz}${adaptarDesinencia(raiz, clase, desinencia, ABSORBE_I_ATONA_LITERAL)}`;
