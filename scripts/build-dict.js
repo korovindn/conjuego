@@ -86,6 +86,7 @@ const FORMAS = {
   subjuntivo: {
     presente: PARADIGMA,
     imperfecto: { ra: PARADIGMA, se: PARADIGMA },
+    futuro: PARADIGMA,
   },
   imperativo: { afirmativa: IMPERATIVO, negativa: IMPERATIVO },
   no_personal: casillas(['gerundio', 'participio_pasado']),

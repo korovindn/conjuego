@@ -1180,6 +1180,26 @@ describe('conjuego', () => {
         `${prefijo}dicho`,
       );
     });
+
+    it.each([
+      ['ser', Celda.PRIMERA_SINGULAR, 'fuere'],
+      ['ir', Celda.PRIMERA_PLURAL, 'fuéremos'],
+      ['placer', Celda.TERCERA_SINGULAR, ['placiere', 'pluguiere']],
+      ['pudrir', Celda.TERCERA_PLURAL, 'pudrieren'],
+      ['tener', Celda.PRIMERA_PLURAL, 'tuviéremos'],
+      ['decir', Celda.TERCERA_SINGULAR, 'dijere'],
+      ['leer', Celda.TERCERA_PLURAL, 'leyeren'],
+      ['gruñir', Celda.PRIMERA_SINGULAR, 'gruñere'],
+      ['pedir', Celda.SEGUNDA_SINGULAR, 'pidieres'],
+      ['detener', Celda.PRIMERA_SINGULAR, 'detuviere'],
+      ['detenerse', Celda.PRIMERA_SINGULAR, 'me detuviere'],
+    ] as const)('futuro de subjuntivo de %s', (verbo, celda, esperado) => {
+      configurar(diccionario);
+
+      expect(conjuego(verbo)[Modo.SUBJUNTIVO][Tiempo.FUTURO][celda]).toEqual(
+        esperado,
+      );
+    });
   });
 });
 
@@ -1203,6 +1223,39 @@ describe('aplicarFormas', () => {
       resultado[FORMA_NO_PERSONAL][FormaNoPersonal.PARTICIPIO_PASADO],
     ).toBeNull();
     expect(resultado[Modo.SUBJUNTIVO]).toEqual(tabla[Modo.SUBJUNTIVO]);
+  });
+
+  it('reemplaza el subjuntivo por tiempo y variante', () => {
+    const resultado = aplicarFormas(tabla, {
+      [Modo.SUBJUNTIVO]: {
+        [Tiempo.IMPERFECTO]: {
+          [SubjuntivoImperfectoVariant.SE]: {
+            [Celda.PRIMERA_SINGULAR]: 'hiciese',
+          },
+        },
+        [Tiempo.FUTURO]: { [Celda.PRIMERA_SINGULAR]: 'ficiere' },
+      },
+    });
+
+    expect(resultado[Modo.SUBJUNTIVO][Tiempo.FUTURO]).toEqual({
+      ...tabla[Modo.SUBJUNTIVO][Tiempo.FUTURO],
+      [Celda.PRIMERA_SINGULAR]: 'ficiere',
+    });
+    expect(resultado[Modo.SUBJUNTIVO][Tiempo.PRESENTE]).toEqual(
+      tabla[Modo.SUBJUNTIVO][Tiempo.PRESENTE],
+    );
+    expect(
+      resultado[Modo.SUBJUNTIVO][Tiempo.IMPERFECTO][
+        SubjuntivoImperfectoVariant.RA
+      ],
+    ).toEqual(
+      tabla[Modo.SUBJUNTIVO][Tiempo.IMPERFECTO][SubjuntivoImperfectoVariant.RA],
+    );
+    expect(
+      resultado[Modo.SUBJUNTIVO][Tiempo.IMPERFECTO][
+        SubjuntivoImperfectoVariant.SE
+      ][Celda.PRIMERA_SINGULAR],
+    ).toBe('hiciese');
   });
 
   it('acepta variantes', () => {

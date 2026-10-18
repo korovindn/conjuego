@@ -9,6 +9,7 @@ import {
   Tabla,
   Tiempo,
 } from '../types';
+import { futuro } from './futuro';
 import { imperfecto } from './imperfecto';
 import { presente } from './presente';
 
@@ -32,13 +33,16 @@ export const subjuntivo = (
       ajustes,
     ),
   },
+  [Tiempo.FUTURO]: futuro(raiz, clase, ajustes),
 });
+
+export { completarFuturo } from './futuro';
 
 export const mapear = <F, G>(
   tabla: Tabla<F>[Modo.SUBJUNTIVO],
   mapeador: (
     forma: F,
-    tiempo: Tiempo.PRESENTE | Tiempo.IMPERFECTO,
+    tiempo: Tiempo.PRESENTE | Tiempo.IMPERFECTO | Tiempo.FUTURO,
     celda: Celda,
     variant?: SubjuntivoImperfectoVariant,
   ) => G,
@@ -69,5 +73,8 @@ export const mapear = <F, G>(
           ),
       ),
     },
+    [Tiempo.FUTURO]: mapearParadigma(tabla[Tiempo.FUTURO], (forma, celda) =>
+      mapeador(forma, Tiempo.FUTURO, celda),
+    ),
   };
 };

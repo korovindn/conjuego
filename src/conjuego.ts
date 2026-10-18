@@ -22,6 +22,7 @@ import {
   mapear as mapearIndicativo,
 } from './indicativo';
 import {
+  completarFuturo,
   subjuntivo as crearSubjuntivo,
   mapear as mapearSubjuntivo,
 } from './subjuntivo';
@@ -85,9 +86,9 @@ export const aplicarFormas = (tabla: Tabla, formas: Formas): Tabla => ({
     tabla[Modo.SUBJUNTIVO],
     (casilla, tiempo, celda, variant) =>
       elegir(
-        tiempo === Tiempo.PRESENTE || variant === undefined
-          ? formas[Modo.SUBJUNTIVO]?.[Tiempo.PRESENTE]?.[celda]
-          : formas[Modo.SUBJUNTIVO]?.[Tiempo.IMPERFECTO]?.[variant]?.[celda],
+        tiempo === Tiempo.IMPERFECTO
+          ? variant && formas[Modo.SUBJUNTIVO]?.[tiempo]?.[variant]?.[celda]
+          : formas[Modo.SUBJUNTIVO]?.[tiempo]?.[celda],
         casilla,
       ),
   ),
@@ -161,7 +162,7 @@ const conjugar = (
       : heredar(verbo, padre, diccionario, padres);
 
   return entrada.formas
-    ? aplicarFormas(tabla, completarImperativo(entrada.formas))
+    ? aplicarFormas(tabla, completarImperativo(completarFuturo(entrada.formas)))
     : tabla;
 };
 

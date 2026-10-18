@@ -43,6 +43,7 @@ export interface Tabla<F = Casilla> {
   [Modo.SUBJUNTIVO]: {
     [Tiempo.PRESENTE]: Paradigma<F>;
     [Tiempo.IMPERFECTO]: Record<SubjuntivoImperfectoVariant, Paradigma<F>>;
+    [Tiempo.FUTURO]: Paradigma<F>;
   };
   [Modo.IMPERATIVO]: Record<Polaridad, ParadigmaImperativo<F>>;
   [FORMA_NO_PERSONAL]: Record<FormaNoPersonal, F>;
